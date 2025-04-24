@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/management_tests.css">
+    <title>Management Tests</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1 class="logo">QuizzForge</h1>
+        <div class="direction">
+            <a href="../pages/Management_Categories.html">Danh mục</a>
+            <a href="../pages/Create_Test.html">Bài test</a>
+            <a href="../pages/Login.html">Đăng xuất</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="main-contents">
+            <h1>Quản lí bài test</h1>
+            
+            <button class="add-test-button" type="button">Thêm bài test</button>
+
+            <button type="button" class="add-category-button btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-test-modal">
+                Xoá
+            </button>
+            
+            <!-- Confirm Delete Modal -->
+            <div class="modal fade" id="delete-test-modal" tabindex="-1" aria-labelledby="delete-test-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="delete-test-label">Xác nhận xoá</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Bạn có chắc chắn muốn xóa bài test này không?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                        <button type="button" class="btn btn-danger" style="margin-left: 24px;">Xoá</button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
+            <input type="text" placeholder="Tìm kiếm theo tên" class="search-test-name">
+            <select name="category" id="category" class="select-category">
+                <option value="All">Tất cả</option>
+            </select>
+            
+            <!-- Test Management Table -->
+            <table class="table table-striped table-hover table-custom">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên bài test</th>
+                        <th>Danh mục</th>
+                        <th>Số câu hỏi</th>
+                        <th>Thời gian</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <p class="copyright">© 2025 Quiz App. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

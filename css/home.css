@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.copyright, .title, .main-content-title {
+    width: 1920px;
+    height: 39px;
+    font-size: 31px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}
+
+.main-content-title {
+    width: 1296px !important;
+    color: black !important;
+    font-size: 27px !important;
+    font-weight: 500 !important;
+}
+
+.navbar {
+    width: 1920px;
+    height: 59px;
+    background-color: #212529;
+    position: relative;
+}
+
+.logo {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 10px 0 0 60px;
+}
+
+.search-test-field {
+    width: 300px;
+    height: 39px;
+    border-radius: 6px;
+    border: none;
+    box-sizing: border-box;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    position: absolute;
+    left: 791px;
+    top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #5683e9;
+}
+
+a:nth-of-type(2) {
+    margin-left: 52px;
+}
+
+.direction {
+    margin: 16px 0 0 562px;
+    display: inline-block;
+    position: absolute;
+    right: 60px;
+}
+
+.section {
+    width: 1920px;
+    height: 140px;
+    background-color: #4A3DB5;
+    padding-top: 24px;
+}
+
+.play-button {
+    width: 57px;
+    height: 38px;
+    border-radius: 6px;
+    background-color: #FFC107;
+    border: 1px solid gray;
+    margin: 16px 0 0 932px;
+}
+
+.play-button:hover {
+    background-color: #FFA000;
+    cursor: pointer;
+}
+
+.main-content {
+    width: 1320px;
+    height: 782px;
+    background-color: #f4f4f4;
+    margin: 17px 0 0 300px;
+}
+
+.footer {
+    width: 1920px;
+    height: 56px;
+    background-color: #333333;
+    padding: 16px;
+    margin-top: 24px;
+}
+
+.copyright {
+    color: white;
+    font-size: 15px;
+}
+
+.arrangement-field {
+    width: 1296px;
+    height:38px;
+    margin: 23px 0 0 12px;
+    background-color: #f4f4f4;
+}
+
+.arrangement-field label {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.assending-button, .descending-button {
+    width: 143px;
+    height: 34px;
+    color:#212529;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.assending-button:hover, .descending-button:hover {
+    cursor: pointer;
+}
+
+.descending-button {
+    margin-left: 8px;
+}

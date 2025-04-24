@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/register.css">
+    <title>Register Page</title>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="title">Đăng ký</h1>
+        <p class="info">
+            QuizForge – Nền tảng sáng tạo bài kiểm tra trực tuyến, giúp bạn dễ dàng thiết kế, chia sẻ và thực hiện các bài kiểm tra một cách nhanh chóng và hiệu quả!
+        </p>
+        <form action="#" method="post">
+            <div class="register-field">
+                <input type="text" class="name-field" placeholder="Họ và tên" id="name-register">
+                <p id="name-error"></p>
+                <input type="text" class="email-field" placeholder="Địa chỉ Email" id="email-register">
+                <p id="email-error"></p>
+                <input type="password" class="password-field" placeholder="Mật khẩu" id="password-register">
+                <p id="password-error"></p>
+                <input type="password" class="confirmPassword-field" placeholder="Xác nhận mật khẩu" id="confirmPassword">
+                <p id="confirmPassword-error"></p>
+                <button type="button" class="register-button" id="register-button">Đăng ký</button>
+                <div class="login-status">
+                    <span>Đã có tài khoản?</span>
+                    <a href="./Login.html" class="login-link"><strong>Đăng nhập</strong></a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="../js/register.js"></script>
+</body>
+</html>

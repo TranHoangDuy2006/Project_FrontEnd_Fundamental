@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background-color: #f8fafc;
+    user-select: none;
+}
+
+.main-container {
+    width: 1600px;
+    height: 1200px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 105px; 
+}
+
+.title-container {
+    width: 636px;
+    height: 170px;
+}
+
+.title {
+    width: 636px;
+    height: 62px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 51px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.info {
+    width: 494px;
+    height: 90px;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 18px 0 22px 0;
+    text-align: center;
+}
+
+.register-field {
+    width: 533px;
+    height: auto;
+    padding: 16px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.3);
+}
+
+input::placeholder {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+input {
+    width: 472px;
+    height: 65px;
+    font-size: 16px;
+    border: 1px solid #E4E4E7;
+    border-radius: 9px;
+    margin: 0 0 25px 15px;
+    box-sizing: border-box;
+    padding: 20px;
+    font-weight: 400;
+}
+
+input:nth-child(1) {
+    margin-top: 25px;
+}
+
+input:nth-of-type(4) {
+    margin-bottom: 0 !important;
+}
+
+.register-button {
+    width: 472px;
+    height: 65px;
+    font-size: 16px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    margin: 63px 0 0 15px;
+}
+
+.login-button:hover, .register-button:hover {
+    background-color: #0348b0;
+    cursor: pointer;
+}
+
+.login-status {
+    width: 444px;
+    height: 25px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 400;
+    margin: 30px 0 0 44px;
+}
+
+.login-status a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #0d6efd;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}

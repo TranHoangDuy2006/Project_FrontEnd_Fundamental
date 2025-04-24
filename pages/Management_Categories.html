@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/management_categories.css">
+    <title>Management Categories</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1 class="logo">QuizzForge</h1>
+        <div class="direction">
+            <a href="../pages/Management_Categories.html">Danh mục</a>
+            <a href="../pages/Create_Test.html">Bài test</a>
+            <a href="../pages/Login.html">Đăng xuất</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="main-contents">
+            <h1>Quản lí danh mục</h1>
+
+            <!-- Open Add Category Modal Button -->
+            <button type="button" class="open-add-category-button" id="open-add-category-button" data-bs-toggle="modal" data-bs-target="#open-add-category-modal">
+                Thêm danh mục
+            </button>
+            
+            <!-- Modal Add Category -->
+            <div class="modal fade" id="open-add-category-modal" tabindex="-1" aria-labelledby="add-category" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="add-category-modal-label" style="font-size: 24px !important"">Thêm/sửa danh mục</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <label for="category-name" class="form-label">Tên danh mục</label>
+                            <input type="text" class="form-control" id="category-name">
+                            <p id="category-name-status"></p>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <label for="category-emoji" class="form-label">Emoji</label>
+                            <input type="text" class="form-control" id="category-emoji">
+                            <p id="category-emoji-status"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 24px" id="add-category-button">Lưu</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Edit Category -->
+            <div class="modal fade" id="edit-category-modal" tabindex="-1" aria-labelledby="edit-category" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="add-category-modal-label" style="font-size: 24px !important"">Thêm/sửa danh mục</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <label for="category-name" class="form-label">Tên danh mục</label>
+                            <input type="text" class="form-control" id="edit-category-name">
+                            <p id="category-name-status"></p>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <label for="category-emoji" class="form-label">Emoji</label>
+                            <input type="text" class="form-control" id="edit-category-emoji">
+                            <p id="category-emoji-status"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 24px" id="save-category-button">Lưu</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="delete-test-modal" tabindex="-1" aria-labelledby="delete-test-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="delete-test-label">Xác nhận xoá</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Bạn có chắc chắn muốn xóa bài test này không?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                        <button type="button" class="btn btn-danger" style="margin-left: 24px;"" id="delete-category-button">Xoá</button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            <!-- Category Table -->
+            <table class="table table-striped table-hover table-custom">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên danh mục</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="category-table-body">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button id="prev"><</button>
+            <span id="page-numbers"></span>
+            <button id="next">></button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <p class="copyright">© 2025 QuizForge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/management_categories.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.copyright {
+    width: 1920px;
+    height: 39px;
+    font-size: 31px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}
+
+.navbar {
+    width: 1920px;
+    height: 59px;
+    background-color: #212529;
+    position: relative;
+}
+
+.logo {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: -5px 0 0 60px !important;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 18px;
+    margin-right: 52px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #5683e9;
+}
+
+.direction {
+    margin: 16px 0 0 562px;
+    position: absolute;
+    right: 60px;
+    top: -1px;
+}
+
+.main-contents {
+    max-width: 1320px;
+    width: 100%;
+    height: 615px;
+    background-color: #ffffff;
+    margin: 48px auto;
+    position: relative;
+    overflow-x: auto;
+}
+
+.main-contents h1 {
+    margin-left: 12px;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.main-contents h1:nth-of-type(2) {
+    margin-top: 24px;
+}
+
+.add-question-button, .save-button{
+    width: 119px;
+    height: 38px;
+    border-radius: 6px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    margin: 8px 0 0 12px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.save-button {
+    width: 92px !important;
+    position: absolute;
+    right: 0;
+}
+
+.add-edit-question-button {
+    width: 41px;
+    height: 31px;
+    border-radius: 4px;
+    color: black;
+    background-color: #FFC107;
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.add-question-button:hover, .save-button:hover {
+    background-color: #0a58ca;
+    cursor: pointer;
+}
+
+.footer {
+    width: 1920px;
+    height: 56px;
+    background-color: #333333;
+    padding: 16px;
+    margin-top: 24px;
+}
+
+.copyright {
+    color: white;
+    font-size: 15px;
+}
+
+.table-custom {
+    width: 100%;
+    margin: 16px 0 0 12px;
+}
+
+th {
+    color: white;
+    font-size: 15px;
+    font-weight: 800 !important;
+    text-align: center;
+    border-right: 1px solid gray;
+}
+
+th:nth-child(1) {
+    width: 90px;
+    height: 41px;
+}
+
+th:nth-child(2) {
+    text-align: left;
+    width: 978px;
+    height: 41px;
+}
+
+th:nth-child(3) {
+    width: 227px;
+    height: 41px;
+    text-align: center;
+}
+
+td {
+    border: 0.5px solid #e3e6e9;
+}
+
+.test-name {
+    width: 1296px;
+    height: 38px;
+    border-radius: 6px;
+    border: 0.5px solid rgb(178, 178, 178);
+    box-sizing: border-box;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 9px 0 0 12px;
+    display: block;
+}
+
+.select-category, .time {
+    width: 150px;
+    height: 38px;
+    border-radius: 6px;
+    border: 0.5px solid rgb(178, 178, 178);
+    box-sizing: border-box;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 9px 0 0 12px;
+}
+
+label {
+    font-weight: 400;
+    font-size: 16px;
+    margin: 24px 0 0 12px;
+}
+
+label:nth-of-type(1) {
+    display: block;
+}
+
+label:nth-of-type(2) {
+    margin-right: 128px;
+}
+
+label:nth-of-type(3) {
+    display: inline-block;
+}
+
+.time {
+    margin-left: 62px;
+}
+
+.modal-body {
+    padding: 0 16px !important;
+}
+
+.label-custom {
+    margin-left: 0 !important;
+}
+
+input {
+    position: relative;
+    z-index: 1;
+}
+
+i {
+    color: red;
+    position: absolute;
+    right: 12px;
+    z-index: 2;
+    transition: all 0.1s ease-in-out;
+}
+
+i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+tr td:nth-child(1), tr td:nth-child(3) {
+    text-align: center;
+}
+
+.edit-question-button, .delete-question-button {
+    width: 41px;
+    height: 31px;
+    border-radius: 4px;
+    color: black;
+    background-color: #FFC107;
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.delete-question-button {
+    width: 58px;
+    height: 31px;
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-body-custom {
+    padding: 24px 16px 14px 16px !important;
+}
