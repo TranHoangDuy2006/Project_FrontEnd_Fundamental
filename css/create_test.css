@@ -246,5 +246,5 @@ tr td:nth-child(1), tr td:nth-child(3) {
 }
 
 .modal-body-custom {
-    padding: 24px 16px 14px 16px !important;
+    padding: 24px 0 14px 70px !important;
 }

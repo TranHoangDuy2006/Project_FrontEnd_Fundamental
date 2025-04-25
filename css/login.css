@@ -6,9 +6,24 @@
 }
 
 @font-face {
-    font-family: 'Poppins';
+    font-family: 'Font_Style_1';
+    src: url('../assets/fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Font_Style_2';
+    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Font_Style_3';
     src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
@@ -35,10 +50,11 @@ body {
 .title {
     width: 636px;
     height: 62px;
-    font-size: 51px;
+    font-size: 52px;
     font-weight: 600;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Font_Style_3', sans-serif;
+    color: #090914;
 }
 
 .info {
@@ -48,11 +64,13 @@ body {
     font-weight: 400;
     margin: 18px 0 22px 0;
     text-align: center;
+    font-family: 'Font_Style_2', sans-serif;
+    color: #52525B;
 }
 
 .login-field {
     width: 533px;
-    height: 484px;
+    height: 500px;
     padding: 16px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
@@ -63,6 +81,8 @@ input::placeholder {
     text-align: center;
     font-size: 16px;
     font-weight: 400;
+    font-family: 'Font_Style_2', sans-serif;
+    color: #52525B;
 }
 
 input {
@@ -88,11 +108,13 @@ input:nth-of-type(4) {
     width: 472px;
     height: 65px;
     font-size: 16px;
+    font-weight: 600;
+    font-family: 'Font_Style_3', sans-serif;
     background-color: #0d6efd;
     color: white;
     border: none;
     border-radius: 9px;
-    margin: 63px 0 0 14px;
+    margin: 10px 0 0 14px;
 }
 
 .login-button:hover {
@@ -104,6 +126,7 @@ input:nth-of-type(4) {
     width: 444px;
     height: 25px;
     font-size: 13px;
+    font-family: 'Font_Style_2', sans-serif;
     text-align: center;
     font-weight: 400;
     margin: 30px 0 0 44px;
@@ -111,6 +134,8 @@ input:nth-of-type(4) {
 
 .register-link {
     font-size: 14px;
+    font-weight: 600;
+    font-family: 'Font_Style_3', sans-serif;
     text-decoration: none;
     color: #0d6efd;
 }
@@ -123,4 +148,9 @@ label {
     font-size: 18px;
     font-weight: 400;
     margin-left: 14px;
+    font-family: 'Font_Style_2', sans-serif;
+}
+
+label:nth-of-type(1) {
+    margin-top: 51px;
 }

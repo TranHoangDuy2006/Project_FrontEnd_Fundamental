@@ -54,6 +54,8 @@ loginButton.addEventListener("click", () => {
   }
 
   if (check) {
+    localStorage.setItem("isLogged", true)
+    localStorage.setItem("currentUserRole", user.role)
     const loginToast = document.getElementById("login-toast")
     const toast = new bootstrap.Toast(loginToast)
     toast.show()
@@ -63,9 +65,9 @@ loginButton.addEventListener("click", () => {
 
     setTimeout(() => {
       if (user.role === "admin") {
-        location.href = "abc.html"
+        location.href = "../pages/Management_Categories.html"
       } else if (user.role === "user") {
-        location.href = "xyz.html"
+        location.href = "../pages/Home.html"
       }
     }, 2000)
 }

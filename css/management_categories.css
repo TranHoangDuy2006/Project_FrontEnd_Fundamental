@@ -137,7 +137,17 @@ td {
 }
 
 .pagination {
-    margin: 20px 900px;
+    margin: 30px 700px;
+    display: flex;
+    justify-content: center;
+}
+
+.active-page {
+    background-color: #0d6efd;
+}
+
+.inactive-page {
+    background-color: white;
 }
 
 #prev {
@@ -199,4 +209,8 @@ tr td:nth-child(1), tr td:nth-child(3) {
     height: 31px;
     background-color: #dc3545;
     color: white;
+}
+
+.modal-body-custom {
+    padding: 24px 0 14px 70px !important;
 }

@@ -65,20 +65,6 @@ a:nth-of-type(2) {
     right: 60px;
 }
 
-.play-button {
-    width: 57px;
-    height: 38px;
-    border-radius: 6px;
-    background-color: #FFC107;
-    border: 1px solid gray;
-    margin: 16px 0 0 932px;
-}
-
-.play-button:hover {
-    background-color: #FFA000;
-    cursor: pointer;
-}
-
 .main-contents {
     width: 1920px;
     height: 687px;
@@ -98,7 +84,7 @@ a:nth-of-type(2) {
     font-size: 15px;
 }
 
-.nav-slidebar, .test-field {
+.nav-sidebar, .test-field {
     width: 200px;
     height: 457px;
     background-color: #ffffff;
@@ -112,4 +98,47 @@ a:nth-of-type(2) {
     width: 1672px !important;
     left: 225px !important;
     border: none;
+    position: relative;
+}
+
+.sidebar-title {
+    width: 167px;
+    height: 67px;
+    margin: 16px 0 0 17px;
+}
+
+.sidebar-title h1 {
+    all: unset;
+    font-size: 25px;
+    font-weight: 500;
+    color: #212529
+}
+
+.time-field {
+    width: 195px;
+    height: 80px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+.action-button-field {
+    width: 1624px;
+    height: 38px;
+    position: absolute;
+    top: 306px;
+    left: 24px;
+}
+
+.question-answer-field {
+    width: 1624px;
+    height: 178px;
+}
+
+.test-name-field {
+    width: 472px;
+    height: 72px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
 }

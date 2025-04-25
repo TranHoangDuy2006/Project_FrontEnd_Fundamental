@@ -11,6 +11,11 @@ const prevButton = document.getElementById("prev")
 const nextButton = document.getElementById("next")
 const confirmDeleteButton = document.getElementById("delete-category-button")
 const addCategoryModal = document.getElementById("open-add-category-modal")
+const logOutLink = document.getElementById("log-out")
+
+logOutLink.addEventListener("click", () => {
+  localStorage.removeItem("isLogged")
+})
 
 let findCategoryId = null
 let currentPage = 1
@@ -192,11 +197,23 @@ function displayPageNumbers() {
   for (let i = 1; i <= totalPages; i++) {
     const button = document.createElement("button")
     button.className = "page"
-    button.textContent = i
+    button.innerHTML = `<span style="color: white; font-size: 16px; font-weight: 400;">${i}</span>`
+
+    if (i === currentPage) {
+      button.classList.add("active-page")
+    }
+
+    else if (i !== currentPage) {
+      button.classList.add("inactive-page")
+      button.innerHTML = `<span style="color: #0d6efd; font-size: 16px; font-weight: 400;">${i}</span>`
+    }
+
     button.addEventListener("click", () => {
       currentPage = i
       displayCategories(currentPage)
+      displayPageNumbers() 
     })
+
     pageNumbers.appendChild(button)
   }
 }

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" href="../assets/images/Login_Image.png" type="image/png">
     <title>Login Page</title>
 </head>
 <body>
@@ -25,8 +27,8 @@
                     <p id="login-password-error"></p>
                     <button type="button" class="login-button" id="login-button">Đăng nhập</button>
                     <div class="login-status">
-                        <span>Chưa có tài khoản?</span>
-                        <a href="./Register.html" class="register-link"><strong>Đăng ký</strong></a>
+                        <span>➥ Chưa có tài khoản?&nbsp;</span>
+                        <a href="./Register.html" class="register-link">Đăng ký</a>
                     </div>
                 </div>
             </form>
@@ -35,13 +37,14 @@
             <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
                 <div id="login-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
                   <div class="d-flex">
-                    <div class="toast-body">
-                      <span style="color:green; font-weight: 500;">Đăng nhập thành công!</span>
+                    <div class="toast-body" style="padding-left: 80px;">
+                      <span style="color:green; font-weight: 500;"><i class="fa-solid fa-check"></i>&nbsp;&nbsp; Đăng nhập thành công!</span>
                     </div>
                     <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                   </div>
                 </div>
             </div>
+            
         </div>
     </main>
 

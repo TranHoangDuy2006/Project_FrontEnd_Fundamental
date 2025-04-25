@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="icon" href="../assets/images/House_Image.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Home Page</title>
 </head>
 <body>
@@ -13,7 +16,7 @@
         <input type="text" placeholder="Tìm kiếm bài test" class="search-test-field">
         <div class="direction">
             <a href="../pages/Home.html">Trang chủ</a>
-            <a href="../pages/Login.html">Đăng xuất</a>
+            <a href="../pages/Login.html" id="log-out">Đăng xuất</a>
         </div>
     </nav>
 
@@ -26,7 +29,7 @@
         <div class="main-content">
             <h1 class="main-content-title">⭐ Các câu đố nổi bật</h1>
             <div class="arrangement-field">
-                <label for="arrangement">Sắp xếp theo:</label>
+                <label for="arrangement" class="arrangement">Sắp xếp theo:</label>
                 <button class="assending-button" type="button">Lượt chơi tăng dần</button>
                 <button class="descending-button" type="button">Lượt chơi giảm dần</button>
             </div>
@@ -38,6 +41,8 @@
             <p class="copyright">© 2025 Quiz App. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="../js/home.js"></script>
 
 </body>
 </html>
