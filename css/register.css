@@ -142,3 +142,7 @@ input:nth-of-type(4) {
 .login-link:hover {
     text-decoration: underline;
 }
+
+i {
+    font-size: 20px;
+}

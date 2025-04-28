@@ -26,7 +26,8 @@
     font-size: 24px;
     font-weight: 700;
     color: #ffffff;
-    margin: 10px 0 0 60px;
+    margin: 4px 0 0 60px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .search-test-field {
@@ -42,11 +43,21 @@
     top: 10px;
 }
 
+.search-test-field::placeholder {
+    font-size: 16px;
+    color: #A9A9A9;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
 a {
     text-decoration: none;
+    display: inline-block;
     color: #ffffff;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 a:hover {
@@ -59,7 +70,7 @@ a:nth-of-type(2) {
 }
 
 .direction {
-    margin: 16px 0 0 562px;
+    margin: 4px 0 0 562px;
     display: inline-block;
     position: absolute;
     right: 60px;
@@ -111,7 +122,8 @@ a:nth-of-type(2) {
     all: unset;
     font-size: 25px;
     font-weight: 500;
-    color: #212529
+    color: #212529;
+    font-family: 'Inter', sans-serif;
 }
 
 .time-field {
@@ -120,6 +132,9 @@ a:nth-of-type(2) {
     position: absolute;
     top: 24px;
     right: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 .action-button-field {
@@ -130,9 +145,30 @@ a:nth-of-type(2) {
     left: 24px;
 }
 
-.question-answer-field {
+.question-field {
     width: 1624px;
     height: 178px;
+    position: absolute;
+    top: 104px;
+    left: 24px;
+}
+
+.question {
+    width: 1624px;
+    height: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.question-answer-field {
+    width: 1624px;
+    height: 96px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    margin-top: 16px;
 }
 
 .test-name-field {
@@ -141,4 +177,253 @@ a:nth-of-type(2) {
     position: absolute;
     top: 24px;
     left: 24px;
+}
+
+.list-question-field {
+    width: 167px;
+    height: 190px;
+    margin-top: 8px;
+}
+
+.sidebar-info {
+    width: 167px;
+    height: 96px;
+    margin-top: 48px;
+}
+
+.sidebar-info p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 14.32px;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.complete-button {
+    width: 99px;
+    height: 38px;
+    border-radius: 6px;
+    border: 1px solid #198754;
+    background-color: #198754;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.complete-button:hover {
+    background-color: rgb(34, 80, 58);
+    cursor: pointer;
+}
+
+.previous-button, .next-button {
+    width: 59px;
+    height: 38px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14.63px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #6C757D;
+    background-color: #6C757D;
+    position: absolute;
+    right: 128px;
+}
+
+.next-button {
+    border: 1px solid #0D6EFD;
+    background-color: #0D6EFD;
+    position: absolute;
+    right: 16px;
+}
+
+.previous-button:hover, .next-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.question-number {
+    all: unset;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 24px;;
+}
+
+.test-name-field {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 33px;
+}
+
+.list-question-field {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    padding: 4px;
+}
+
+.redirect-button {
+    width: 30px;
+    height: 30px;
+    color: black;
+    background-color: #F8F9FA;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.redirect-button:hover {
+    cursor: pointer;
+}
+
+.question-clicked {
+    background-color: #0D6EFD;
+    color: white
+}
+
+.modal-body {
+    padding: 16px;
+    position: relative;
+    width: 498px;
+    height: 465px;
+}
+
+.modal-body h1 {
+    all: unset;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    position: absolute;
+    left: 167px;
+}
+
+.congratulation-field {
+    width: 466px;
+    height: 160px;
+    background-color: #D1E7DD;
+    position: absolute;
+    top: 70px;
+    border: 1px solid #A3CFBB;
+    border-radius: 6px;
+}
+
+.congratulation-field h1 {
+    all: unset;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 29px;
+    font-weight: 500;
+    color: #0A3622;
+    text-align: center;
+    margin-top: 9px;
+    line-height: 28.8px;
+    letter-spacing: 0px;
+}
+
+.congratulation-field p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 16px;
+    font-family: Inter;
+    line-height: 24px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}
+
+.congratulation-field hr {
+    margin: 0 17px 0 17px;
+    color: #0A3622;
+}
+
+.congratulation-field p:nth-child(4) {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #0A3622;
+}
+
+.result-detail-field {
+    width: 466px;
+    height: 203px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    border: 1px solid #cccccc;
+    position: absolute;
+    top: 246px;
+}
+
+.result-detail-field-title {
+    all: unset;
+    display: block;
+    width: 464px;
+    height: 49px;
+    color: #212529;
+    background: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.result-detail-field h1 {
+    all: unset;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.test-result {
+    width: 464px;
+    height: 152px;
+}
+
+.test-result p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.test-result p:nth-child(1) {
+    margin-top: 16px;
+}
+
+.total-questions {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+input[type="text"]:disabled {
+    background-color: white;
+}
+
+.answered {
+    background-color: #198754;
+    color: white;
 }

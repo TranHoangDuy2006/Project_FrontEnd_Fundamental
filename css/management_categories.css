@@ -8,10 +8,11 @@
 .copyright {
     width: 1920px;
     height: 39px;
-    font-size: 31px;
     font-weight: 500;
     color: white;
     text-align: center;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #category-name-status, #category-emoji-status {
@@ -29,14 +30,16 @@
 .logo {
     display: inline-block;
     font-size: 24px;
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     color: #ffffff;
-    margin: -5px 0 0 60px !important;
+    margin: -3px 0 0 60px !important;
 }
 
 a {
     text-decoration: none;
     color: #ffffff;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 18px;
     margin-right: 52px;
@@ -70,6 +73,7 @@ a:hover {
 
 .main-contents h1 {
     margin-left: 12px;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 32px;
 }
@@ -84,6 +88,7 @@ a:hover {
     margin: 24px 0 0 12px;
     font-size: 15px;
     font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 }
 
 .open-add-category-button:hover {
@@ -94,14 +99,9 @@ a:hover {
 .footer {
     width: 1920px;
     height: 56px;
-    background-color: #333333;
+    background-color: #212529;
     padding: 16px;
     margin-top: 24px;
-}
-
-.copyright {
-    color: white;
-    font-size: 15px;
 }
 
 .table-custom {
@@ -112,6 +112,7 @@ th {
     color: white;
     font-size: 15px;
     font-weight: 800;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     border-right: 1px solid gray;
 }
@@ -134,6 +135,8 @@ th:nth-child(3) {
 
 td {
     border: 0.5px solid #e3e6e9;
+    font-family: 'Roboto', sans-serif;
+    color: #212529;
 }
 
 .pagination {
@@ -184,13 +187,12 @@ td {
     color: #0d6efd;
 }
 
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
 tr td:nth-child(1), tr td:nth-child(3) {
     text-align: center;
+}
+
+tr td:nth-child(1), tr td:nth-child(2) {
+    padding-top: 12px;
 }
 
 .edit-category-button, .delete-category-button {
@@ -213,4 +215,15 @@ tr td:nth-child(1), tr td:nth-child(3) {
 
 .modal-body-custom {
     padding: 24px 0 14px 70px !important;
+}
+
+button:disabled {
+    background-color: #ccc !important; 
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+button:disabled:hover {
+    cursor: not-allowed !important;
 }

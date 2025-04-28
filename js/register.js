@@ -7,6 +7,7 @@ const emailError = document.querySelector("#email-error")
 const passwordError = document.querySelector("#password-error")
 const confirmPasswordError = document.querySelector("#confirmPassword-error")
 const registerButton = document.querySelector("#register-button")
+const registerToast = document.getElementById("register-toast")
 
 function getAccountFromLocalStorage() {
     return JSON.parse(localStorage.getItem("users")) || []
@@ -60,7 +61,7 @@ registerButton.addEventListener("click", () => {
   confirmPasswordError.innerHTML = ""
 
   if (nameRegister.value.trim() === "") {
-    nameError.innerHTML = `<span style="color: red; margin: 0 0 24px 24px !important; display: inline-block;">Họ và tên không được để trống!</span>`
+    nameError.innerHTML = `<span style="color: red; margin: 0 0 24px 24px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Họ và tên không được để trống!</span>`
     nameRegister.style.border = "none"
     nameRegister.style.outline = "1px solid red"
     valid = false
@@ -80,41 +81,41 @@ registerButton.addEventListener("click", () => {
 
   const registeredEmails = getAccountFromLocalStorage().map(user => user.email)
   if (emailRegister.value.trim() === "") {
-    emailError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;">Địa chỉ email không được để trống!</span>`
+    emailError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Địa chỉ email không được để trống!</span>`
     emailRegister.style.border = "none"
     emailRegister.style.outline = "1px solid red"
     valid = false
   } else if (!emailPattern.test(emailRegister.value.trim())) {
-    emailError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;">Email không đúng định dạng!</span>`
+    emailError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Email không đúng định dạng!</span>`
     emailRegister.style.border = "none"
     emailRegister.style.outline = "1px solid red"
     valid = false
   } else if (registeredEmails.includes(emailRegister.value.trim())) {
-    emailError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;">Email đã được sử dụng, vui lòng sử dụng địa chỉe Email khác!</span>`
+    emailError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Email đã được sử dụng, vui lòng sử dụng địa chỉe Email khác!</span>`
     emailRegister.style.border = "none"
     emailRegister.style.outline = "1px solid red"
     valid = false
   }
 
   if (passwordRegister.value.trim() === "") {
-    passwordError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;">Mật khẩu không được để trống!</span>`
+    passwordError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Mật khẩu không được để trống!</span>`
     passwordRegister.style.border = "none"
     passwordRegister.style.outline = "1px solid red"
     valid = false
   } else if (passwordRegister.value.length < 8) {
-    passwordError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;">Mật khẩu phải có ít nhất 8 ký tự!</span>`
+    passwordError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Mật khẩu phải có ít nhất 8 ký tự!</span>`
     passwordRegister.style.border = "none"
     passwordRegister.style.outline = "1px solid red"
     valid = false
   }
 
   if (confirmPassword.value.trim() === "") {
-    confirmPasswordError.innerHTML = `<span style="color: red; margin: 20px 0 24px 20px !important; display: inline-block;">Xác nhận mật khẩu không được để trống!</span>`
+    confirmPasswordError.innerHTML = `<span style="color: red; margin: 20px 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Xác nhận mật khẩu không được để trống!</span>`
     confirmPassword.style.border = "none"
     confirmPassword.style.outline = "1px solid red"
     valid = false
   } else if (confirmPassword.value !== passwordRegister.value) {
-    confirmPasswordError.innerHTML = `<span style="color: red; margin: 20px 0 24px 20px !important; display: inline-block;">Mật khẩu xác nhận không khớp với mật khẩu đã đăng ký!</span>`
+    confirmPasswordError.innerHTML = `<span style="color: red; margin: 20px 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Mật khẩu xác nhận không khớp với mật khẩu đã đăng ký!</span>`
     confirmPassword.style.border = "none"
     confirmPassword.style.outline = "1px solid red"
     valid = false
@@ -126,7 +127,11 @@ registerButton.addEventListener("click", () => {
     emailRegister.value = ""
     passwordRegister.value = ""
     confirmPassword.value = ""
-    alert("Đăng ký thành công!")
-    location.href = "../pages/Login.html"
+    const toast = new bootstrap.Toast(registerToast, { delay: 2000 }) 
+    toast.show()
+
+    setTimeout(() => {
+      location.href = "../pages/Login.html"
+    }, 2500)
   }
 })

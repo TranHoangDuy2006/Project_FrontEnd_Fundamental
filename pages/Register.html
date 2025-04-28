@@ -3,36 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/register.css">
     <link rel="icon" href="../assets/images/Register_Image.png" type="image/png">
     <title>Register Page</title>
 </head>
 <body>
-    <div class="main-container">
-        <h1 class="title">Đăng ký</h1>
-        <p class="info">
-            QuizForge – Nền tảng sáng tạo bài kiểm tra trực tuyến, giúp bạn dễ dàng thiết kế, chia sẻ và thực hiện các bài kiểm tra một cách nhanh chóng và hiệu quả!
-        </p>
-        <form action="#" method="post">
-            <div class="register-field">
-                <input type="text" class="name-field" placeholder="Họ và tên" id="name-register">
-                <p id="name-error"></p>
-                <input type="text" class="email-field" placeholder="Địa chỉ Email" id="email-register">
-                <p id="email-error"></p>
-                <input type="password" class="password-field" placeholder="Mật khẩu" id="password-register">
-                <p id="password-error"></p>
-                <input type="password" class="confirmPassword-field" placeholder="Xác nhận mật khẩu" id="confirmPassword">
-                <p id="confirmPassword-error"></p>
-                <button type="button" class="register-button" id="register-button">Đăng ký</button>
-                <div class="login-status">
-                    <span>➥ Đã có tài khoản?&nbsp;</span>
-                    <a href="./Login.html" class="login-link">Đăng nhập</a>
+    
+    <main>
+        
+        <div class="main-container">
+
+            <h1 class="title">Đăng ký</h1>
+            <p class="info">
+                QuizForge – Nền tảng sáng tạo bài kiểm tra trực tuyến, giúp bạn dễ dàng thiết kế, chia sẻ và thực hiện các bài kiểm tra một cách nhanh chóng và hiệu quả!
+            </p>
+            <form action="#" method="post">
+                <div class="register-field">
+                    <input type="text" class="name-field" placeholder="Họ và tên" id="name-register">
+                    <p id="name-error"></p>
+                    <input type="text" class="email-field" placeholder="Địa chỉ Email" id="email-register">
+                    <p id="email-error"></p>
+                    <input type="password" class="password-field" placeholder="Mật khẩu" id="password-register">
+                    <p id="password-error"></p>
+                    <input type="password" class="confirmPassword-field" placeholder="Xác nhận mật khẩu" id="confirmPassword">
+                    <p id="confirmPassword-error"></p>
+                    <button type="button" class="register-button" id="register-button">Đăng ký</button>
+                    <div class="login-status">
+                        <span>➥ Đã có tài khoản?&nbsp;</span>
+                        <a href="./Login.html" class="login-link">Đăng nhập</a>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Register Toast Noftification -->
+            <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+                <div id="register-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="d-flex">
+                    <div class="toast-body" style="padding-left: 80px;">
+                      <span style="color:green; font-weight: 500;"><i class="fa-solid fa-check"></i>&nbsp;&nbsp; Đăng kí thành công!</span>
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                  </div>
                 </div>
             </div>
-        </form>
-    </div>
 
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/register.js"></script>
-
+  
 </body>
 </html>

@@ -8,8 +8,9 @@
 .copyright {
     width: 1920px;
     height: 39px;
-    font-size: 31px;
+    font-size: 15px;
     font-weight: 500;
+    font-family: 'Roboto', sans-serif;
     color: white;
     text-align: center;
 }
@@ -25,8 +26,9 @@
     display: inline-block;
     font-size: 24px;
     font-weight: 700;
+    font-family: 'Roboto', sans-serif;
     color: #ffffff;
-    margin: -5px 0 0 60px !important;
+    margin: -3px 0 0 60px !important;
 }
 
 a {
@@ -34,6 +36,7 @@ a {
     color: #ffffff;
     font-weight: 400;
     font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     margin-right: 52px;
 }
 
@@ -70,10 +73,11 @@ a:hover {
     margin-left: 12px;
     font-weight: 500;
     font-size: 32px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .add-test-button {
-    width: 152px;
+    width: 122px;
     height: 38px;
     border-radius: 6px;
     background-color: #0d6efd;
@@ -82,6 +86,7 @@ a:hover {
     margin: 24px 0 0 12px;
     font-size: 15px;
     font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 }
 
 .add-test-button:hover {
@@ -97,11 +102,6 @@ a:hover {
     margin-top: 24px;
 }
 
-.copyright {
-    color: white;
-    font-size: 15px;
-}
-
 .table-custom {
     width: 100%;
     margin: 16px 0 0 12px;
@@ -109,8 +109,9 @@ a:hover {
 
 th {
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 800 !important;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     border-right: 1px solid gray;
 }
@@ -152,6 +153,14 @@ th:nth-child(6) {
 
 td {
     border: 0.5px solid #e3e6e9;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding-top: 10px !important;
+}
+
+tr td:nth-child(1), tr td:nth-child(6) {
+    text-align: center;
 }
 
 .search-test-name {
@@ -173,16 +182,108 @@ td {
     font-size: 16px;
 }
 
-.select-category {
-    width: 150px;
+.select-sort-test {
+    width: 220px;
     height: 38px;
     border-radius: 6px;
     border: 0.5px solid rgb(178, 178, 178);
     box-sizing: border-box;
     padding: 0 10px 0 10px;
     font-size: 16px;
-    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 70px;
-    left: 922px;
+    right: 248px;
+}
+
+.search-test-name {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.search-test-name::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.pagination {
+    margin: 30px 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    width: 36px;
+    height: 38px;
+    border: 1px solid #DEE2E6;
+    font-size: 16px;
+    font-weight: 400;
+    color: #0d6efd;
+}
+
+.active-page {
+    background-color: #0d6efd;
+}
+
+.inactive-page {
+    background-color: white;
+}
+
+#prev {
+    background-color: white;
+    color: white;
+    width: 35px;
+    height: 38px;
+    border: none;
+    cursor: pointer;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    color: #212529;
+    border: 1px solid #DEE2E6;
+}
+
+#next {
+    background-color: white;
+    color: white;
+    width: 35px;
+    height: 38px;
+    border: 1px solid #DEE2E6;
+    cursor: pointer;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: #212529;
+}
+
+button:disabled {
+    background-color: #ccc !important; 
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+button:disabled:hover {
+    cursor: not-allowed !important;
+}
+
+.edit-test-button, .delete-test-button {
+    width: 41px;
+    height: 31px;
+    border-radius: 4px;
+    color: black;
+    background-color: #FFC107;
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.delete-test-button {
+    width: 58px;
+    height: 31px;
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-body-custom {
+    padding: 24px 0 14px 70px !important;
 }

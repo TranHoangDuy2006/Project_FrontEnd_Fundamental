@@ -12,9 +12,11 @@ const nextButton = document.getElementById("next")
 const confirmDeleteButton = document.getElementById("delete-category-button")
 const addCategoryModal = document.getElementById("open-add-category-modal")
 const logOutLink = document.getElementById("log-out")
+const editTestButton = document.querySelectorAll(".edit-test-button")
 
 logOutLink.addEventListener("click", () => {
   localStorage.removeItem("isLogged")
+  localStorage.removeItem("currentUserRole")
 })
 
 let findCategoryId = null
@@ -184,7 +186,7 @@ function displayCategories(page) {
   attachDeleteAction()
 
   prevButton.disabled = page === 1 // Nếu trang hiện tại là 1 thì vô hiệu hoá
-  nextButton.disabled = page === Math.ceil(categories.length / rowsPerPage) // Nếu trang hiện tại là cuối cùng thì vô hiệu hoá
+  nextButton.disabled = page === Math.ceil(categories.length / rowsPerPage) || categories.length === 0 // Nếu trang hiện tại là cuối cùng thì vô hiệu hoá hoặc không có danh mục nào
   displayPageNumbers()
 }
 
