@@ -32,24 +32,24 @@ loginButton.addEventListener("click", () => {
   if (!email.value.trim()) {
     emailError.innerHTML = `<span style="color: red; margin: 0 0 20px 18px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Địa chỉ email không được để trống!</span>`
     email.style.border = "none"
-    email.style.outline = "1px solid red"
+    email.style.outline = "2px solid red"
     check = false
   } else if (!user) {
     emailError.innerHTML = `<span style="color: red; margin: 0 0 20px 18px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Email không tồn tại!</span>`
     email.style.border = "none"
-    email.style.outline = "1px solid red"
+    email.style.outline = "2px solid red"
     check = false
   }
 
   if (!password.value.trim()) {
     passwordError.innerHTML = `<span style="color: red; margin: 0 0 20px 18px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Mật khẩu không được để trống!</span>`
     password.style.border = "none"
-    password.style.outline = "1px solid red"
+    password.style.outline = "2px solid red"
     check = false
   } else if (user && user.password !== password.value.trim()) {
     passwordError.innerHTML = `<span style="color: red; margin: 0 0 20px 18px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Mật khẩu không đúng, vui lòng thử lại!</span>`
     password.style.border = "none"
-    password.style.outline = "1px solid red"
+    password.style.outline = "2px solid red"
     check = false
   }
 

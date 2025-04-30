@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="icon" href="../assets/images/House_Image.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Home Page</title>
 </head>
@@ -14,7 +16,7 @@
     <nav class="navbar">
 
         <h1 class="logo">QuizzForge</h1>
-        <input type="text" placeholder="Tìm kiếm bài test" class="search-test-field">
+        <input type="text" placeholder="Tìm kiếm bài test" class="search-test-field" id="search-test-field">
         <div class="direction">
             <a href="../pages/Home.html">Trang chủ</a>
             <a href="../pages/Login.html" id="log-out">Đăng xuất</a>
@@ -26,7 +28,7 @@
 
         <div class="section">
             <p class="title">Hãy thử 1 câu đố ngẫu nhiên 🎲</p>
-            <button class="play-button" type="button">Play</button>
+            <button class="random-button" type="button" id="random-button">Chơi</button>
         </div>
 
         <div class="main-content">
@@ -48,6 +50,18 @@
             <button id="next">></button>
         </div>
 
+        <!-- Playamount Toast Noftification -->
+        <div class="position-absolute" style="top: 210px; right: 10px; z-index: 11;">
+            <div id="play-amount-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                <div class="toast-body" style="padding-left: 70px;">
+                  <span style="color:red; font-weight: 500;"><i class="fa-solid fa-circle-xmark fa-2"></i>&nbsp;&nbsp; Đã hết lượt chơi bài test này !</span>
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+        </div>
+
     </main>
 
     <footer>
@@ -58,6 +72,7 @@
         
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/home.js"></script>
 
 </body>

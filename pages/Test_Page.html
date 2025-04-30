@@ -76,21 +76,21 @@
                         <h1>Chúc mừng!</h1>
                         <p>Bạn đã hoàn thành bài kiểm tra!</p>
                         <hr>
-                        <p>Điểm của bạn: </p>
+                        <p>Điểm của bạn: <span id="score-percentage" class="score-percentage"></span> </p>
                     </div>
                     <div class="result-detail-field">
                         <div class="result-detail-field-title">
                             <h1>Kết quả cụ thể:</h1>
                         </div>
                         <div class="test-result">
-                            <p>Tổng số câu hỏi: <span id="total-questions" class="total-questions"></span></p>
-                            <p>Câu trả lời đúng:</p>
-                            <p>Câu trả lời sai:</p>
+                            <p>Tổng số câu hỏi: <span id="total-questions" class="number"></span></p>
+                            <p>Câu trả lời đúng: <span id="correct-answers" class="number"></span></p>
+                            <p>Câu trả lời sai: <span id="wrong-answers" class="number"></span></p>
                         </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Làm lại</button>
+                    <button type="button" class="btn btn-primary" id="try-again-button">Làm lại</button>
                     <button type="button" class="btn btn-success" style="margin-left: 24px;"" id="home-button">Trang chủ</button>
                   </div>
                 </div>

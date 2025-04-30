@@ -20,7 +20,7 @@ body {
     width: 1920px;
     height: 39px;
     font-size: 31px;
-    font-weight: 500;
+    font-weight: 500 !important;
     color: white;
     text-align: center;
     font-family: 'Inter', sans-serif;
@@ -52,7 +52,7 @@ body {
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
-    margin: 15px 0 0 60px;
+    margin: 1px 0 0 60px;
 }
 
 .search-test-field {
@@ -91,7 +91,7 @@ a:nth-of-type(2) {
 }
 
 .direction {
-    margin: 18px 0 0 562px;
+    margin: 2px 0 0 562px;
     display: inline-block;
     position: absolute;
     right: 60px;
@@ -102,16 +102,29 @@ a:nth-of-type(2) {
     height: 140px;
     background-color: #4A3DB5;
     padding-top: 24px;
+    position: relative;
 }
 
-.play-button {
+.play-button, .random-button {
     width: 57px;
     height: 38px;
     border-radius: 6px;
     background-color: #FFC107;
     border: 1px solid gray;
     margin: 16px 0 0 932px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
 }
+
+.random-button {
+    position: absolute;
+    bottom: 18px;
+}
+
 
 .play-button:hover {
     background-color: #FFA000;
@@ -173,7 +186,7 @@ a:nth-of-type(2) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 16px;  
+    gap: 35px;  
     padding: 16px 8px 16px 8px;
 }
 
@@ -246,7 +259,7 @@ a:nth-of-type(2) {
 .active {
     background-color: #ef0a66;
     border: none;
-    outline: 1px solid #5683e9;
+    color: white;
 }
 
 .pagination {

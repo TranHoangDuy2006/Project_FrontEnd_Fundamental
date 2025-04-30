@@ -29,7 +29,6 @@ const logOutLink = document.getElementById("log-out")
 const testName = document.querySelector("#test-name")
 const testNameStatus = document.querySelector("#test-name-status")
 const testTime = document.querySelector("#test-time")
-const categoryName = document.querySelector("category-list")
 const editQuestion = document.getElementById("edit-question")
 
 const createTestToast = document.getElementById("create-test-toast")
@@ -46,19 +45,19 @@ testName.addEventListener("input", () => {
   testNameStatus.innerHTML = ""
 })
 
-function validateTime() {
+function validateTimeTest() {
   let value = parseInt(testTime.value)
   
   if (isNaN(value) || value < 15) {
     testTime.value = 15
   }
-  else if (value > 60) {
-    testTime.value = 60
+  else if (value > 120) {
+    testTime.value = 120
   }
 }
 
-testTime.addEventListener("change", validateTime)
-testTime.addEventListener("input", validateTime)
+testTime.addEventListener("change", validateTimeTest)
+testTime.addEventListener("input", validateTimeTest)
 
 addQuestionButton.addEventListener("click", () => {
   testNameStatus.innerHTML = ""
@@ -218,38 +217,58 @@ renderCategoryList()
 function saveTestsToLocalStorage() {
   const tests = getTestsFromLocalStorage()
   const questions = getQuestionsFromLocalStorage()
-  const name = document.querySelector("#test-name").value
+  const name = document.querySelector("#test-name").value.trim()
   const time = document.querySelector("#test-time").value
-  const imageLink = document.querySelector("#test-image").value
+  const imageLink = document.querySelector("#test-image").value.trim()
   const selectedCategory = JSON.parse(categoryList.value)
-  
-  const newTest = {
-      id: tests.length > 0 ? tests[tests.length - 1].id + 1 : 1,
-      testName: name,
-      categoryName: selectedCategory.categoryName,
-      categoryEmoji: selectedCategory.categoryEmoji,
-      image: imageLink,
-      playTime: time,
-      playAmount: 3,
-      numberOfQuestions: questions.length,
-      questions: questions.map(q => {
-          return {
-              content: q.questionName,
-              answers: q.answers.map(a => {
-                  return {
-                      answer: a.text,
-                      isCorrected: a.isCorrect
-                  }
-              })
-          }
-      })
+
+  const editTestId = localStorage.getItem("editTestId")
+  let isEditMode = false
+
+  if (editTestId !== null) {
+    isEditMode = true
   }
-  
-  tests.push(newTest)
+
+  const newTest = {
+    id: null, // sẽ gán bên dưới
+    testName: name,
+    categoryName: selectedCategory.categoryName,
+    categoryEmoji: selectedCategory.categoryEmoji,
+    image: imageLink,
+    playTime: time,
+    playAmount: 5,
+    numberOfQuestions: questions.length,
+    questions: questions.map(q => ({
+      content: q.questionName,
+      answers: q.answers.map(a => ({
+        answer: a.text,
+        isCorrected: a.isCorrect
+      }))
+    }))
+  }
+
+  if (isEditMode) {
+    const testId = parseInt(editTestId)
+    const index = tests.findIndex(t => t.id === testId)
+    if (index !== -1) {
+      newTest.id = tests[index].id // giữ nguyên ID cũ
+      tests[index] = newTest
+    }
+    localStorage.removeItem("editTestId")
+  } else {
+    // kiểm tra tên đã tồn tại chưa (đề phòng)
+    if (tests.some(test => test.testName.toLowerCase() === name.toLowerCase())) {
+      testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Tên bài test đã tồn tại, vui lòng sử dụng tên khác!</span>`
+      return
+    }
+
+    newTest.id = tests.length > 0 ? tests[tests.length - 1].id + 1 : 1
+    tests.push(newTest)
+  }
+
   localStorage.setItem("tests", JSON.stringify(tests))
-  
   localStorage.removeItem("questions")
-  
+
   testName.value = ""
   testTime.value = "15"
   testImageLink.value = ""
@@ -261,22 +280,27 @@ saveTestButton.addEventListener("click", () => {
   const questions = getQuestionsFromLocalStorage()
   const tests = getTestsFromLocalStorage()
   let valid = true
+
+  const editTestId = localStorage.getItem("editTestId")
+  const isEditMode = editTestId !== null
+
   if (testName.value.trim() === "") {
     testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Tên bài test không được để trống!</span>`
     valid = false
   }
 
-  else if (tests.some(test => test.testName.toLowerCase() === testName.value.trim().toLowerCase())) {
+  // ❌ Bỏ kiểm tra trùng tên khi chỉnh sửa
+  if (!isEditMode && tests.some(test => test.testName.toLowerCase() === testName.value.trim().toLowerCase())) {
     testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Tên bài test đã tồn tại, vui lòng sử dụng tên bài test khác!</span>`
     valid = false
   }
 
-  else if (questions.length < 1) {
+  if (questions.length < 1) {
     testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Phải có ít nhất một câu hỏi cho bài test!</span>`
     valid = false
   }
 
-  else if (testImageLink.value.trim() === "") {
+  if (!isEditMode && testImageLink.value.trim() === "") {
     testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Link ảnh bài test không được để trống!</span>`
     valid = false
   }
@@ -458,8 +482,9 @@ function loadEditTestData() {
     const tests = getTestsFromLocalStorage()
     const test = tests.find(t => t.id === parseInt(editTestId))
     if (test) {
-      document.getElementById("test-name").value = test.testName
-      document.getElementById("test-time").value = test.playTime
+      testName.value = test.testName
+      testTime.value = test.playTime
+      testImageLink.value = test.image
 
       const selectedCategory = {
         categoryName: test.categoryName,
@@ -485,8 +510,6 @@ function loadEditTestData() {
       localStorage.setItem("questions", JSON.stringify(questions))
       renderQuestionTable()
     }
-
-    localStorage.removeItem("editTestId")
 
   } else {
     localStorage.removeItem("questions")

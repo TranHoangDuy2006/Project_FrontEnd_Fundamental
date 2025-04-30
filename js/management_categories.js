@@ -70,6 +70,11 @@ function attachDeleteAction() {
   })
 }
 
+function isEmoji(input) {
+  const emojiRegex = /\p{Extended_Pictographic}/u
+  return emojiRegex.test(input)
+}
+
 nameCategory.addEventListener("change", () => {
   nameStatus.innerHTML = ""
   nameCategory.style.border = "1px solid #E4E4E7"
@@ -91,21 +96,35 @@ addCategoryButton.addEventListener("click", () => {
   if (nameCategory.value.trim() === "") {
     nameStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Tên danh mục không được để trống!</span>`
     nameCategory.style.border = "none"
-    nameCategory.style.outline = "1px solid red"
+    nameCategory.style.outline = "2px solid red"
     isValid = false
   }
 
-  else if(categoryListName.includes(nameCategory.value.trim())) {
+  else if (categoryListName.includes(nameCategory.value.trim())) {
     nameStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Tên danh mục đã tồn tại, vui lòng sử dụng tên danh mục khác!</span>`
     nameCategory.style.border = "none"
-    nameCategory.style.outline = "1px solid red"
+    nameCategory.style.outline = "2px solid red"
+    isValid = false
+  }
+
+  else if (nameCategory.value.trim() === "" || nameCategory.value.trim().length < 5) {
+    nameStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Tên danh mục phải có ít nhất 5 ký tự!</span>`
+    nameCategory.style.border = "none"
+    nameCategory.style.outline = "2px solid red"
     isValid = false
   }
   
   if (emojiCategory.value.trim() === "") {
     emojiStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Emoji của danh mục không được để trống!</span>`
     emojiCategory.style.border = "none"
-    emojiCategory.style.outline = "1px solid red"
+    emojiCategory.style.outline = "2px solid red"
+    isValid = false
+  }
+
+  else if (!isEmoji(emojiCategory.value.trim())) {
+    emojiStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Emoji không hợp lệ!</span>`
+    emojiCategory.style.border = "none"
+    emojiCategory.style.outline = "2px solid red"
     isValid = false
   }
 
@@ -163,6 +182,16 @@ function attachEditAction() {
 
 function displayCategories(page) {
   const categories = getCategoryFromLocalStorage()
+  if (categories === null) return
+
+  const totalPages = Math.ceil(categories.length / rowsPerPage)
+
+  // Nếu trang hiện tại vượt quá số trang, quay lại trang cuối cùng hợp lệ
+  if (page > totalPages && totalPages > 0) {
+    currentPage = totalPages
+    return displayCategories(currentPage)
+  }
+
   const start = (page - 1) * rowsPerPage
   const end = start + rowsPerPage
   const paginatedCategories = categories.slice(start, end)

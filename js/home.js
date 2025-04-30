@@ -1,12 +1,49 @@
-const logOutLink = document.getElementById("log-out")
 const listTestsField = document.getElementById("test-list-field")
 const assendingButton = document.getElementById("assending-button")
 const descendingButton = document.getElementById("descending-button")
 const prevButton = document.getElementById("prev")
 const nextButton = document.getElementById("next")
-const logoutLink = document.getElementById("log-out")
+const logOutLink = document.getElementById("log-out")
+const searchTestField = document.getElementById("search-test-field")
+const playAmountToast = document.getElementById("play-amount-toast")
+const randomButton = document.getElementById("random-button")
 
-logoutLink.addEventListener("click", () => {
+if (!sessionStorage.getItem("isLogged") && !localStorage.getItem("isLogged")) {
+  location.href = "../pages/Login.html"
+}
+
+randomButton.addEventListener("click", () => {
+  const tests = getTestsFromLocalStorage()
+  if (!tests || tests.length === 0) return
+
+  const playableTests = tests.filter(test => test.playAmount > 0)
+  if (playableTests.length === 0) {
+    const toast = new bootstrap.Toast(playAmountToast, { delay: 2000 }) 
+    toast.show()
+    return
+  }
+
+  const randomIndex = Math.floor(Math.random() * playableTests.length)
+  const randomTest = playableTests[randomIndex]
+
+  localStorage.setItem("currentTestName", randomTest.testName)
+
+  setTimeout(() => {
+    location.href = "test_page.html"
+  }, 2500)
+})
+
+searchTestField.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    listTestsField.innerHTML = ""
+    const searchText = searchTestField.value
+    const tests = getTestsFromLocalStorage()
+    const filteredTests = tests.filter(test => test.testName.toLowerCase().includes(searchText.toLowerCase()))
+    renderTest(filteredTests)
+  }
+})
+
+logOutLink.addEventListener("click", () => {
   localStorage.removeItem("isLogged")
   localStorage.removeItem("currentUserRole")
   location.href = "../pages/Login.html"
@@ -50,24 +87,19 @@ function getTestsFromLocalStorage() {
   return JSON.parse(localStorage.getItem("tests")) || []
 }
 
-function displayTests(page) {
-  const tests = getTestsFromLocalStorage()
-  const start = (page - 1) * rowsPerPage
-  const end = start + rowsPerPage
-  const paginatedTests = tests.slice(start, end)
-
+function renderTest(tests) {
   listTestsField.innerHTML = ""
 
-  paginatedTests.forEach(test => {
+  tests.forEach(test => {
     const data = `
       <div class="test-container">
-        <img src="${test.image}" alt="error-image-link">
+        <img src="${test.image}" alt="&nbsp;&nbsp;&nbsp;error-image-link">
         <div class="test-info">
           <p>${test.categoryEmoji}&nbsp;&nbsp;${test.categoryName}</p>
           <h1>${test.testName}</h1>
           <p>${test.numberOfQuestions} câu hỏi - ${test.playAmount} lượt chơi</p>
         </div>
-        <button type="button" class="play-button" data-test-name="${test.testName}">Chơi</button>
+        <button type="button" class="play-button" id="${test.id}" data-test-name="${test.testName}">Chơi</button>
       </div>`
     listTestsField.innerHTML += data
   })
@@ -76,10 +108,40 @@ function displayTests(page) {
   playButtons.forEach(button => {
   button.addEventListener("click", () => {
     const testName = button.getAttribute("data-test-name")
-    localStorage.setItem("currentTestName", testName)
-    location.href = "test_page.html"
+    const tests = getTestsFromLocalStorage()
+    const selectedTest = tests.find(test => test.testName === testName)
+    selectedTest.playAmount++
+    if (selectedTest && selectedTest.playAmount > 0) {
+      localStorage.setItem("currentTestName", testName)
+      setTimeout(() => {
+        location.href = "test_page.html"
+      , 2500})
+    }
+    else {
+      const toast = new bootstrap.Toast(playAmountToast, { delay: 2000 }) 
+      toast.show()
+    }
   })
 })
+}
+
+function displayTests(page) {
+  const tests = getTestsFromLocalStorage()
+  if (tests === null) return
+
+  const totalPages = Math.ceil(tests.length / rowsPerPage)
+
+  // Nếu trang hiện tại vượt quá số trang, quay lại trang cuối cùng hợp lệ
+  if (page > totalPages && totalPages > 0) {
+    currentPage = totalPages
+    return displayTests(currentPage)
+  }
+
+  const start = (page - 1) * rowsPerPage
+  const end = start + rowsPerPage
+  const paginatedTests = tests.slice(start, end)
+
+  renderTest(paginatedTests)
 
   prevButton.disabled = page === 1 // Nếu trang hiện tại là 1 thì vô hiệu hoá
   nextButton.disabled = page === Math.ceil(tests.length / rowsPerPage) || tests.length === 0 // Nếu trang hiện tại là cuối cùng thì vô hiệu hoá hoặc không có bài test nào
