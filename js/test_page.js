@@ -35,7 +35,7 @@
     const questionData = currentTest.questions[index]
     currentQuestionIndex = index
 
-    questionNumber.innerHTML = `Câu hỏi ${index + 1} trên ${currentTest.questions.length}:`
+    questionNumber.innerHTML = `❓ Câu hỏi ${index + 1} trên ${currentTest.questions.length}:`
     questionText.innerHTML = `${questionData.content}`
 
     let answersHTML = ""
@@ -44,7 +44,7 @@
       answersHTML += `
         <div style="height: 24px;">
           <label>
-            <input type="checkbox" value="${idx}" class="answer-checkbox" ${isChecked}> ${answer.answer}
+            <input type="checkbox" value="${idx}" class="answer-checkbox" ${isChecked}> &nbsp;&nbsp;${answer.answer}.
           </label>
         </div>
       `
@@ -75,7 +75,7 @@
   const currentTest = tests.find(test => test.testName === currentTestName)
 
   if (currentTest) {
-    testName.innerHTML = currentTest.testName
+    testName.innerHTML = `<img src="../assets/images/Test_Image_title_Test.png" alt="Test"> ${currentTest.testName} <img src="../assets/images/Test_Image_title_Test.png" alt="Test">`
     const questionsCount = currentTest.questions.length
     listQuestionField.innerHTML = ""
     for (let i = 0; i < questionsCount; i++) {
@@ -97,18 +97,36 @@
   }
 
   showQuestion(0)
+  const firstQuestionButton = document.querySelector(".redirect-button")
+  firstQuestionButton.classList.add("question-clicked")
 
   previousButton.addEventListener("click", () => {
     if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        showQuestion(currentQuestionIndex);
+      currentQuestionIndex--
+      showQuestion(currentQuestionIndex)
+  
+      const allButtons = document.querySelectorAll(".redirect-button")
+      allButtons.forEach(btn => btn.classList.remove("question-clicked"))
+  
+      const currentButton = allButtons[currentQuestionIndex]
+      if (currentButton) {
+        currentButton.classList.add("question-clicked")
+      }
     }
   })
 
   nextButton.addEventListener("click", () => {
     if (currentQuestionIndex < currentTest.questions.length - 1) {
-        currentQuestionIndex++
-        showQuestion(currentQuestionIndex)
+      currentQuestionIndex++
+      showQuestion(currentQuestionIndex)
+  
+      const allButtons = document.querySelectorAll(".redirect-button")
+      allButtons.forEach(btn => btn.classList.remove("question-clicked"))
+  
+      const currentButton = allButtons[currentQuestionIndex]
+      if (currentButton) {
+        currentButton.classList.add("question-clicked")
+      }
     }
   })
 
@@ -123,8 +141,8 @@
 
     timeField.innerHTML = `
       <div>
-        <p>Thời gian test: <strong>${totalMinutes} phút</strong></p>
-        <p style="margin-top: 16px;">Còn lại: <strong>${minutes} phút ${formattedSeconds} giây</strong></p>
+        <p>Thời gian test: <strong>${totalMinutes} phút.</strong></p>
+        <p style="margin-top: 16px;">Còn lại: <strong>${minutes} phút ${formattedSeconds} giây.</strong></p>
       </div>
     `
   }
@@ -151,7 +169,6 @@
     correctAnswers.innerText = correctCount
     wrongAnswers.innerText = wrongCount
 
-    currentTest.playAmount--
     if (currentTest.playAmount < 0) {
       currentTest.playAmount = 0
     }
@@ -199,20 +216,16 @@
   }
   
   tryAgainButton.addEventListener("click", () => {
-    // Reset dữ liệu đã trả lời
     answeredQuestions = []
     for (let i = 0; i < currentTest.questions.length; i++) {
       answeredQuestions[i] = []
     }
-  
-    // Reset câu hỏi hiện tại và hiển thị lại
+
     currentQuestionIndex = 0
     showQuestion(currentQuestionIndex)
-  
-    // Reset style nút câu hỏi
+
     updateAnsweredStatus()
-  
-    // Reset thời gian và khởi động lại timer
+
     remainingSeconds = parseInt(currentTest.playTime) * 60
     updateTimerDisplay()
   

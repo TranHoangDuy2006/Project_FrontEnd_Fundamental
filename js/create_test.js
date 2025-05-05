@@ -34,6 +34,7 @@ const editQuestion = document.getElementById("edit-question")
 const createTestToast = document.getElementById("create-test-toast")
 const createQuestionToast = document.getElementById("create-question-toast")
 const deleteQuestionToast = document.getElementById("delete-question-toast")
+const fullQuestionToast = document.getElementById("full-question-toast")
 const listAnswers = document.querySelectorAll(".form-control")
 const listCheckBox = document.querySelectorAll('input[type="checkbox"]')
 const title = document.getElementById("title")
@@ -44,6 +45,28 @@ let findQuestionId = null
 testName.addEventListener("input", () => {
   testNameStatus.innerHTML = ""
 })
+
+function checkNumberOfQuestions() {
+  const questions = getQuestionsFromLocalStorage()
+  if (questions.length === 20) {
+    setTimeout(() => {
+      const toast = new bootstrap.Toast(fullQuestionToast, { delay: 2000 }) 
+      toast.show()
+    }, 1500)
+    addQuestionButton.disabled = true
+    addQuestionButton.classList.add("disable-hover")
+    addQuestionButton.classList.add("inactive-add-question-button")
+  }
+  
+  else if (questions.length < 20) {
+    addQuestionButton.disabled = false
+    addQuestionButton.classList.remove("disable-hover")
+    addQuestionButton.classList.remove("inactive-add-question-button")
+    addQuestionButton.classList.add("active-add-question-button")
+  }
+}
+
+checkNumberOfQuestions()
 
 function validateTimeTest() {
   let value = parseInt(testTime.value)
@@ -60,6 +83,7 @@ testTime.addEventListener("change", validateTimeTest)
 testTime.addEventListener("input", validateTimeTest)
 
 addQuestionButton.addEventListener("click", () => {
+  const questions = getQuestionsFromLocalStorage()
   testNameStatus.innerHTML = ""
   listAnswers.forEach(answer => {
     answer.value = ""
@@ -77,6 +101,7 @@ addQuestion.addEventListener("change", () => {
 logOutLink.addEventListener("click", () => {
   localStorage.removeItem("isLogged")
   localStorage.removeItem("currentUserRole")
+  localStorage.removeItem("editTestId")
 })
 
 function getTestsFromLocalStorage() {
@@ -96,10 +121,29 @@ function attachEditAction() {
         editQuestionInput.value = question.questionName
 
         const answerInputs = [
-          { input: editAnswer, checkbox: editAnswer.previousElementSibling.querySelector("input[type='checkbox']") },
-          { input: editAnswer2, checkbox: editAnswer2.previousElementSibling.querySelector("input[type='checkbox']") },
-          { input: editAnswer3, checkbox: editAnswer3.previousElementSibling.querySelector("input[type='checkbox']") },
-          { input: editAnswer4, checkbox: editAnswer4.previousElementSibling.querySelector("input[type='checkbox']") },
+          {
+            input: document.getElementById("edit-answer-question-1"),
+            checkbox: document.getElementById("edit-answer-question-1").previousElementSibling.querySelector("input[type='checkbox']"),
+            container: document.getElementById("edit-answer-question-1").closest(".input-group")
+          },
+
+          {
+            input: document.getElementById("edit-answer-question-2"),
+            checkbox: document.getElementById("edit-answer-question-2").previousElementSibling.querySelector("input[type='checkbox']"),
+            container: document.getElementById("edit-answer-question-2").closest(".input-group")
+          },
+
+          {
+            input: document.getElementById("edit-answer-question-3"),
+            checkbox: document.getElementById("edit-answer-question-3").previousElementSibling.querySelector("input[type='checkbox']"),
+            container: document.getElementById("edit-answer-question-3").closest(".input-group")
+          },
+
+          {
+            input: document.getElementById("edit-answer-question-4"),
+            checkbox: document.getElementById("edit-answer-question-4").previousElementSibling.querySelector("input[type='checkbox']"),
+            container: document.getElementById("edit-answer-question-4").closest(".input-group")
+          },
         ]
 
         answerInputs.forEach((item, index) => {
@@ -107,9 +151,11 @@ function attachEditAction() {
           if (answer) {
             item.input.value = answer.text
             item.checkbox.checked = answer.isCorrect
+            item.container.style.display = "flex"
           } else {
             item.input.value = ""
             item.checkbox.checked = false
+            item.container.style.display = "none"
           }
         })
 
@@ -121,8 +167,7 @@ function attachEditAction() {
 
 function renderQuestionTable() {
     const listQuestion = getQuestionsFromLocalStorage()
-    title.innerHTML = "Tạo bài test"
-  
+ 
     if (questionTableBody) {
       questionTableBody.innerHTML = ""
       
@@ -149,6 +194,7 @@ function deleteQuestion(questionId) {
   const updatedQuestions = questions.filter(ques => ques.id !== questionId)
   localStorage.setItem("questions", JSON.stringify(updatedQuestions))
   renderQuestionTable()
+  checkNumberOfQuestions()
 }
 
 confirmDeleteButton.addEventListener("click", () => {
@@ -190,7 +236,7 @@ function attachDeleteAction() {
 }
 
 function getQuestionsFromLocalStorage() {
-    return JSON.parse(localStorage.getItem("questions")) || []
+  return JSON.parse(localStorage.getItem("questions")) || []
 }
 
 function getCategoryNameFromLocalStorage() {
@@ -212,8 +258,6 @@ function renderCategoryList() {
   `).join("")
 }
 
-renderCategoryList()
-
 function saveTestsToLocalStorage() {
   const tests = getTestsFromLocalStorage()
   const questions = getQuestionsFromLocalStorage()
@@ -230,13 +274,13 @@ function saveTestsToLocalStorage() {
   }
 
   const newTest = {
-    id: null, // sẽ gán bên dưới
+    id: null, 
     testName: name,
     categoryName: selectedCategory.categoryName,
     categoryEmoji: selectedCategory.categoryEmoji,
     image: imageLink,
     playTime: time,
-    playAmount: 5,
+    playAmount: 10,
     numberOfQuestions: questions.length,
     questions: questions.map(q => ({
       content: q.questionName,
@@ -251,12 +295,11 @@ function saveTestsToLocalStorage() {
     const testId = parseInt(editTestId)
     const index = tests.findIndex(t => t.id === testId)
     if (index !== -1) {
-      newTest.id = tests[index].id // giữ nguyên ID cũ
+      newTest.id = tests[index].id 
       tests[index] = newTest
     }
     localStorage.removeItem("editTestId")
   } else {
-    // kiểm tra tên đã tồn tại chưa (đề phòng)
     if (tests.some(test => test.testName.toLowerCase() === name.toLowerCase())) {
       testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Tên bài test đã tồn tại, vui lòng sử dụng tên khác!</span>`
       return
@@ -289,7 +332,6 @@ saveTestButton.addEventListener("click", () => {
     valid = false
   }
 
-  // ❌ Bỏ kiểm tra trùng tên khi chỉnh sửa
   if (!isEditMode && tests.some(test => test.testName.toLowerCase() === testName.value.trim().toLowerCase())) {
     testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Tên bài test đã tồn tại, vui lòng sử dụng tên bài test khác!</span>`
     valid = false
@@ -377,6 +419,8 @@ saveButton.addEventListener("click", () => {
 
     renderQuestionTable()
 
+    checkNumberOfQuestions()
+
     const toast = new bootstrap.Toast(createQuestionToast, { delay: 2000 }) 
     toast.show()
   }
@@ -435,7 +479,6 @@ editSaveButton.addEventListener("click", () => {
   }
 })
 
-
 editQuestionModal.addEventListener("hidden.bs.modal", () => {
   clearEditForm()
 })
@@ -444,10 +487,10 @@ addMoreAnswerButton.addEventListener("click", () => {
   addMoreAnswerButton.insertAdjacentHTML("beforebegin", `
     <div class="input-group mb-3">
       <div class="input-group-text">
-        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời">
+        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
         <i class="fa-solid fa-trash-can"></i>
       </div>
-      <input type="text" class="form-control" aria-label="Text input with checkbox">
+      <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
     </div>
   `)
 })

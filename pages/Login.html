@@ -17,7 +17,7 @@
         <div class="main-container">
             <h1 class="title">Đăng nhập</h1>
             <p class="info">
-                QuizForge – Nền tảng sáng tạo bài kiểm tra trực tuyến, giúp bạn dễ dàng thiết kế, chia sẻ và thực hiện các bài kiểm tra một cách nhanh chóng và hiệu quả!
+                QuizzForge – Nền tảng sáng tạo bài kiểm tra trực tuyến, giúp bạn dễ dàng thiết kế, chia sẻ và thực hiện các bài kiểm tra một cách nhanh chóng và hiệu quả!
             </p>
             <form action="#" method="post">
                 <div class="login-field" id="login-field">
@@ -25,7 +25,10 @@
                     <input type="text" class="email-field" placeholder="Địa chỉ Email" id="login-email">
                     <p id="login-email-error"></p>
                     <label for="password">Mật khẩu:</label>
-                    <input type="password" class="password-field" placeholder="Mật khẩu" id="login-password">
+                    <div class="position-relative">
+                        <input type="password" class="password-field" placeholder="Mật khẩu" id="login-password">
+                        <i class="fa-solid fa-eye toggle-password" toggle="#login-password" style="position: absolute; right: 28px; top: 38px; transform: translateY(-50%); cursor: pointer;"></i>
+                    </div>
                     <p id="login-password-error"></p>
                     <button type="button" class="login-button" id="login-button">Đăng nhập</button>
                     <div class="login-status">
@@ -40,7 +43,7 @@
                 <div id="login-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
                   <div class="d-flex">
                     <div class="toast-body" style="padding-left: 80px;">
-                      <span style="color:green; font-weight: 500;"><i class="fa-solid fa-check"></i>&nbsp;&nbsp; Đăng nhập thành công!</span>
+                      <span style="color:green; font-weight: 500;"><i class="fa-solid fa-circle-check"></i>&nbsp;&nbsp; Đăng nhập thành công !</span>
                     </div>
                     <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                   </div>
@@ -53,6 +56,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/login.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+ 
 </body>
 </html>

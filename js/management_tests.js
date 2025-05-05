@@ -112,6 +112,16 @@ function attachEditTestAction() {
 
 function displayTests(page) {
   const tests = filteredTests || getTestsFromLocalStorage()
+
+  if (tests === null) return
+
+  const totalPages = Math.ceil(tests.length / rowsPerPage)
+
+  if (page > totalPages && totalPages > 0) {
+    currentPage = totalPages
+    return displayTests(currentPage)
+  }
+
   const start = (page - 1) * rowsPerPage
   const end = start + rowsPerPage
   const paginatedTests = tests.slice(start, end)

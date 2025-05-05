@@ -39,7 +39,7 @@
     padding: 0 10px 0 10px;
     font-size: 16px;
     position: absolute;
-    left: 791px;
+    margin-left: 791px;
     top: 10px;
 }
 
@@ -55,7 +55,7 @@ a {
     display: inline-block;
     color: #ffffff;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
 
 }
@@ -434,4 +434,131 @@ input[type="text"]:disabled {
     font-size: 18.1px;
     line-height: 24px;
     letter-spacing: 0px;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.custom-menu-actions-button {
+    width: 56px;
+    height: 40px;
+    color: #9b9d9e;
+    background-color: #212529;
+    border: 1px solid #36393d;
+    border-radius: 6px;
+    position: absolute;
+    top: 8px;
+    right: 30px;
+    display: none;
+}
+
+.custom-menu-actions-button:hover {
+    cursor: pointer;
+}
+
+.custom-menu-actions-button::after {
+    display: none !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+    left: 570px !important;
+}
+
+.dropdown-menu li a:hover {
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 750px) {
+    .navbar, .copyright, .footer {
+        width: 750px;
+        height: 56px;
+    }
+    
+    a, .search-test-field {
+        display: none;
+    }
+
+    .main-contents {
+        width: 750px;
+        height: 689px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .nav-sidebar {
+        width: 702px;
+        height: 235px;
+        border-right: none;
+        border-bottom: 0.5px solid rgb(201, 201, 201);
+    }
+
+    .test-field {
+        width: 702px !important;
+        height: 406px;
+        position: absolute;
+        top: 259px;
+        left: 24px !important;
+    }
+
+    .sidebar-title h1 {
+        width: 670px;
+        height: 30px;
+        text-align: center;
+        display: block;
+    }
+
+    .list-question-field {
+        width: 670px;
+        height: 76px;
+        display: grid;
+        grid-template-columns: repeat(17, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .sidebar-info {
+        width: 670px;
+        height: 76px;
+        text-align: center;
+    }
+
+    .test-name-field {
+        width: 654px;
+        height: 34px;
+        text-align: center;
+    }
+
+    .time-field {
+        width: 654px;
+        height: 80px;
+        top: 65px !important;
+        left: 24px !important;
+        text-align: center;
+        font-size: 15px;
+        padding: 14px;
+    }
+
+    .question-field {
+        width: 654px;
+        height: 174px;
+        top: 145px !important;
+        left: 24px !important;
+    }
+
+    .action-button-field {
+        width: 654px;
+        height: 38px;
+        top: 344px !important;
+        left: 24px !important;
+    }
+
+    .custom-menu-actions-button {
+        display: inline-block;
+        right: 60px;
+    }
 }

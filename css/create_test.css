@@ -74,7 +74,7 @@ a:hover {
 }
 
 .add-question-button, .save-button{
-    width: 119px;
+    width: 130px;
     height: 38px;
     border-radius: 6px;
     background-color: #0d6efd;
@@ -230,7 +230,7 @@ i {
     color: red;
     position: absolute;
     right: 12px;
-    z-index: 2;
+    z-index: 3;
     transition: all 0.1s ease-in-out;
 }
 
@@ -313,4 +313,16 @@ button {
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     margin-left: 82px;
+}
+
+.disable-hover {
+    pointer-events: none;
+}
+
+.active-add-question-button {
+    background-color: #0D6EFD;
+}
+
+.inactive-add-question-button {
+    background-color: #6c757d;
 }

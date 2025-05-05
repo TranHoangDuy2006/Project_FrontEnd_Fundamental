@@ -28,7 +28,7 @@
 
         <div class="section">
             <p class="title">Hãy thử 1 câu đố ngẫu nhiên 🎲</p>
-            <button class="random-button" type="button" id="random-button">Chơi</button>
+            <button class="random-button" type="button" id="random-button"><i class="fa-solid fa-gamepad"></i>&nbsp;&nbsp;Chơi</button>
         </div>
 
         <div class="main-content">
@@ -45,9 +45,9 @@
         </div>
 
         <div class="pagination">
-            <button id="prev"><</button>
+            <button id="prev"><i class="fa-solid fa-arrow-left"></i></button>
             <span id="page-numbers"></span>
-            <button id="next">></button>
+            <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
 
         <!-- Playamount Toast Noftification -->
@@ -62,12 +62,24 @@
             </div>
         </div>
 
+        <!-- Login To Play Test Toast Noftification -->
+        <div class="position-absolute" style="top: 210px; right: 10px; z-index: 11;">
+            <div id="login-to-play-test" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                <div class="toast-body" style="padding-left: 40px;">
+                  <span style="color:red; font-weight: 500;"><i class="fa-solid fa-circle-xmark fa-2"></i>&nbsp;&nbsp; Vui lòng đăng nhập để chơi bài test !</span>
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+        </div>
+
     </main>
 
     <footer>
 
         <div class="footer">
-            <p class="copyright">© 2025 Quiz App. All rights reserved.</p>
+            <p class="copyright">© 2025 Quizz App. All rights reserved.</p>
         </div>
         
     </footer>

@@ -46,50 +46,50 @@
             <h1>Quản lý câu hỏi</h1>
 
             <!-- Add Question Button -->
-            <button class="add-question-button" type="button" data-bs-toggle="modal" data-bs-target="#add-question-modal" id="add-question-button">Thêm câu hỏi</button>
+            <button class="add-question-button" type="button" data-bs-toggle="modal" data-bs-target="#add-question-modal" id="add-question-button"><i class="fa-solid fa-plus" style="position: static; color: white"></i>&nbsp;&nbsp;Thêm câu hỏi</button>
             
             <!-- Add Question Modal -->
             <div class="modal fade" id="add-question-modal" tabindex="-1" aria-labelledby="add-question-label" aria-hidden="true" data-bs-backdrop="static">
                 <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="add-question-label">Thêm/sửa câu hỏi</h5>
+                        <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="add-question-label">Thêm câu hỏi / câu trả lời</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         <div class="col-12" id="answers-body-field">
-                            <label for="edit" class="form-label label-custom">Câu hỏi</label>
+                            <label for="edit" class="form-label label-custom">Câu hỏi:</label>
                             <input type="text" class="form-control" id="add-question" placeholder="Nhập câu hỏi">
                             <p id="question-name-status"></p>
-                            <label class="form-label label-custom" style="display: block;">Câu trả lời</label>
+                            <label class="form-label label-custom" style="display: block;">Câu trả lời:</label>
                             <p id="check-answer-status"></p>
                             <div class="input-group mb-3">
                                 <div class="input-group-text">
-                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời" id="answer-question-1">
+                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="answer-question-1">
                                   <i class="fa-solid fa-trash-can"></i>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời">
+                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
                               </div>
                               <div class="input-group mb-3">
                                 <div class="input-group-text">
-                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời" id="answer-question-2">
+                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="answer-question-2">
                                   <i class="fa-solid fa-trash-can"></i>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời">
+                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
                               </div>
                               <div class="input-group mb-3">
                                 <div class="input-group-text">
-                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời" id="answer-question-3">
+                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="answer-question-3">
                                   <i class="fa-solid fa-trash-can"></i>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời">
+                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
                               </div>
                               <div class="input-group mb-3">
                                 <div class="input-group-text">
-                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời" id="answer-question-4">
+                                  <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="answer-question-4">
                                   <i class="fa-solid fa-trash-can"></i>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời">
+                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
                               </div>
                               <button type="button" class="btn btn-secondary" style="margin-bottom: 16px !important;" id="add-more-answer-button">Thêm câu trả lời</button>
                         </div>
@@ -103,44 +103,44 @@
             </div>
 
             <!-- Edit Question Modal -->
-            <div class="modal fade" id="edit-questions-modal" tabindex="-1" aria-labelledby="edit-question-label" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal fade" id="edit-questions-modal" tabindex="-1" aria-labelledby="edit-question-label" aria-hidden="true" data-bs-backdrop="static" id="edit-questions-modal">
               <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="edit-question-label">Thêm/sửa câu hỏi</h5>
+                      <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="edit-question-label">Sửa câu hỏi / câu trả lời</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <div class="col-12">
-                          <label for="edit" class="form-label label-custom">Câu hỏi</label>
+                          <label for="edit" class="form-label label-custom">Câu hỏi:</label>
                           <input type="text" class="form-control" id="edit-question" placeholder="Nhập câu hỏi">
                           <p id="edit-question-name-status"></p>
-                          <label class="form-label label-custom">Câu trả lời</label>
+                          <label class="form-label label-custom">Câu trả lời:</label>
                           <p id="edit-check-answer-status"></p>
                           <div class="input-group mb-3">
                               <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời">
+                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
                                 <i class="fa-solid fa-trash-can"></i>
                               </div>
                               <input type="text" class="form-control" aria-label="Text input with checkbox" id="edit-answer-question-1">
                             </div>
                             <div class="input-group mb-3">
                               <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời">
+                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
                                 <i class="fa-solid fa-trash-can"></i>
                               </div>
                               <input type="text" class="form-control" aria-label="Text input with checkbox" id="edit-answer-question-2">
                             </div>
                             <div class="input-group mb-3">
                               <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời">
+                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
                                 <i class="fa-solid fa-trash-can"></i>
                               </div>
                               <input type="text" class="form-control" aria-label="Text input with checkbox" id="edit-answer-question-3">
                             </div>
                             <div class="input-group mb-3">
                               <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" placeholder="Nhập câu trả lời">
+                                <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
                                 <i class="fa-solid fa-trash-can"></i>
                               </div>
                               <input type="text" class="form-control" aria-label="Text input with checkbox" id="edit-answer-question-4">
@@ -161,11 +161,11 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="delete-question-label">Xác nhận xoá</h5>
+                    <h5 class="modal-title" style="font-size: 24px !important; font-weight: 500;" id="delete-question-label">Xác nhận xoá câu hỏi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body modal-body-custom">
-                    <p>Bạn có chắc chắn muốn xóa câu hỏi này không?</p>
+                    <p>Bạn có chắc chắn muốn xóa câu hỏi này không ?</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
@@ -180,7 +180,7 @@
             <div id="delete-question-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
               <div class="d-flex">
                 <div class="toast-body" style="padding-left: 80px;">
-                  <span style="color:green; font-weight: 500;">&nbsp;&nbsp; Xoá câu hỏi thành công!</span>
+                  <span style="color:green; font-weight: 500;"><i class="fa-solid fa-circle-check fa-2" style="position: static !important; color: green !important;"></i>&nbsp;&nbsp; Xoá câu hỏi thành công !</span>
                 </div>
                 <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
               </div>
@@ -188,7 +188,7 @@
         </div>
 
             <!-- Save Test Button -->
-            <button class="save-button" type="button" id="end-save-button">Lưu</button>    
+            <button class="save-button" type="button" id="end-save-button"><i class="fa-solid fa-floppy-disk" style="position: static; color: white"></i>&nbsp;&nbsp;Lưu</button>
             <table class="table table-striped table-hover table-custom">   
                 <thead class="table-dark">
                     <tr>
@@ -208,7 +208,7 @@
           <div id="create-test-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
               <div class="toast-body" style="padding-left: 80px;">
-                <span style="color:green; font-weight: 500;">&nbsp;&nbsp; Tạo bài test thành công!</span>
+                <span style="color:green; font-weight: 500;"><i class="fa-solid fa-circle-check fa-2" style="position: static !important; color: green !important;"></i>&nbsp;&nbsp; Tạo bài test thành công !</span>
               </div>
               <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
@@ -220,7 +220,19 @@
           <div id="create-question-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
               <div class="toast-body" style="padding-left: 80px;">
-                <span style="color:green; font-weight: 500;">&nbsp;&nbsp; Tạo câu hỏi thành công!</span>
+                <span style="color:green; font-weight: 500;"><i class="fa-solid fa-circle-check fa-2" style="position: static !important; color: green !important;"></i>&nbsp;&nbsp; Tạo câu hỏi thành công !</span>
+              </div>
+              <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Question Toast Noftification -->
+        <div class="position-fixed end-0 p-3" style="z-index: 11; top: 55px; right: 5px">
+          <div id="full-question-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body" style="padding-left: 75px;">
+                <span style="color:red; font-weight: 500;"><i class="fa-solid fa-circle-xmark fa-2" style="position: static !important;"></i>&nbsp;&nbsp; Danh sách câu hỏi đã đầy !</span>
               </div>
               <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
@@ -232,7 +244,7 @@
     <footer>
 
         <div class="footer">
-            <p class="copyright">© 2025 Quiz App. All rights reserved.</p>
+            <p class="copyright">© 2025 Quizz App. All rights reserved.</p>
         </div>
 
     </footer>

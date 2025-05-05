@@ -13,10 +13,12 @@ const confirmDeleteButton = document.getElementById("delete-category-button")
 const addCategoryModal = document.getElementById("open-add-category-modal")
 const logOutLink = document.getElementById("log-out")
 const editTestButton = document.querySelectorAll(".edit-test-button")
+const createCategoryToast = document.getElementById("create-category-toast")
+const deleteCategoryToast = document.getElementById("delete-category-toast")
 
 logOutLink.addEventListener("click", () => {
   localStorage.removeItem("isLogged")
-  localStorage.removeItem("currentUserRole")
+  localStorage.removeItem("currentUserRole") 
 })
 
 let findCategoryId = null
@@ -34,6 +36,7 @@ function saveCategoryToLocalStorage(name, emoji) {
     categoryName: name,
     categoryEmoji: emoji
   }
+  
   categories.push(newCategory)
   localStorage.setItem("categories", JSON.stringify(categories))
 }
@@ -50,12 +53,34 @@ function deleteCategory(categoryId) {
   displayCategories(currentPage)
 }
 
+function updateIdCategories() {
+  const categories = getCategoryFromLocalStorage()
+  categories.length > 0 ? categories[categories.length - 1].id + 1 : 1
+  localStorage.setItem("categories", JSON.stringify(categories))
+}
+
 confirmDeleteButton.addEventListener("click", () => {
   if (findCategoryId !== null) {
-    deleteCategory(findCategoryId)
+    let categories = getCategoryFromLocalStorage()
+    categories = categories.filter(cate => cate.id !== findCategoryId)
+
+    categories = categories.map((cate, index) => ({
+      ...cate,
+      id: index + 1
+    }))
+
+    localStorage.setItem("categories", JSON.stringify(categories))
+    
     const deleteModal = document.getElementById("delete-test-modal")
     const modal = bootstrap.Modal.getInstance(deleteModal)
     modal.hide()
+
+    setTimeout(() => {
+      const toast = new bootstrap.Toast(deleteCategoryToast, ({ delay: 1000 }))
+      toast.show()
+    }, 200)
+
+    displayCategories(currentPage)
     findCategoryId = null
   }
 })
@@ -136,6 +161,8 @@ addCategoryButton.addEventListener("click", () => {
     nameCategory.value = ""
     emojiCategory.value = ""
     displayCategories(currentPage)
+    const toast = new bootstrap.Toast(createCategoryToast, { delay: 2000 })
+    toast.show()
   }
 })
 
@@ -186,7 +213,6 @@ function displayCategories(page) {
 
   const totalPages = Math.ceil(categories.length / rowsPerPage)
 
-  // Nếu trang hiện tại vượt quá số trang, quay lại trang cuối cùng hợp lệ
   if (page > totalPages && totalPages > 0) {
     currentPage = totalPages
     return displayCategories(currentPage)

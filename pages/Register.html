@@ -17,7 +17,7 @@
 
             <h1 class="title">Đăng ký</h1>
             <p class="info">
-                QuizForge – Nền tảng sáng tạo bài kiểm tra trực tuyến, giúp bạn dễ dàng thiết kế, chia sẻ và thực hiện các bài kiểm tra một cách nhanh chóng và hiệu quả!
+                QuizzForge – Nền tảng sáng tạo bài kiểm tra trực tuyến, giúp bạn dễ dàng thiết kế, chia sẻ và thực hiện các bài kiểm tra một cách nhanh chóng và hiệu quả!
             </p>
             <form action="#" method="post">
                 <div class="register-field">
@@ -25,9 +25,15 @@
                     <p id="name-error"></p>
                     <input type="text" class="email-field" placeholder="Địa chỉ Email" id="email-register">
                     <p id="email-error"></p>
-                    <input type="password" class="password-field" placeholder="Mật khẩu" id="password-register">
+                    <div class="password-wrapper position-relative">
+                        <input type="password" class="password-field form-control" placeholder="Mật khẩu" id="password-register">
+                        <i class="fa-solid fa-eye toggle-password" toggle="#password-register" style="position: absolute; right: 25px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                      </div>
                     <p id="password-error"></p>
-                    <input type="password" class="confirmPassword-field" placeholder="Xác nhận mật khẩu" id="confirmPassword">
+                    <div class="password-wrapper position-relative">
+                        <input type="password" class="confirmPassword-field form-control" placeholder="Xác nhận mật khẩu" id="confirmPassword">
+                        <i class="fa-solid fa-eye toggle-password" toggle="#confirmPassword" style="position: absolute; right: 25px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                      </div>
                     <p id="confirmPassword-error"></p>
                     <button type="button" class="register-button" id="register-button">Đăng ký</button>
                     <div class="register-status">
@@ -42,7 +48,7 @@
                 <div id="register-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
                   <div class="d-flex">
                     <div class="toast-body" style="padding-left: 80px;">
-                      <span style="color:green; font-weight: 500;"><i class="fa-solid fa-check"></i>&nbsp;&nbsp; Đăng kí thành công!</span>
+                      <span style="color:green; font-weight: 500;"><i class="fa-solid fa-circle-check"></i>&nbsp;&nbsp; Đăng kí thành công !</span>
                     </div>
                     <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                   </div>
@@ -55,6 +61,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/register.js"></script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
 </body>
 </html>

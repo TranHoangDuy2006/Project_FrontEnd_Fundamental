@@ -121,10 +121,15 @@ a:nth-of-type(2) {
 }
 
 .random-button {
+    width: 87px;
     position: absolute;
     bottom: 18px;
 }
 
+.random-button:hover {
+    background-color: #FFA000;
+    cursor: pointer;
+}
 
 .play-button:hover {
     background-color: #FFA000;
@@ -241,8 +246,9 @@ a:nth-of-type(2) {
 }
 
 .test-container button {
-    width: 49px;
+    width: 90px;
     height: 34px;
+    padding: 0 8px 0 8px;
     color: black;
     background-color: #FFC107;
     font-family: 'Inter', sans-serif;
@@ -251,15 +257,15 @@ a:nth-of-type(2) {
     text-align: center;
     position: absolute;
     bottom: 4px;
-    right: 14px;
+    right: 8px;
     border: 1px solid #FFC107;
     border-radius: 6px;
 }
 
 .active {
-    background-color: #ef0a66;
+    background-color: #fff3cd;
     border: none;
-    color: white;
+    border: 2px solid #5683e9;
 }
 
 .pagination {
@@ -272,6 +278,7 @@ a:nth-of-type(2) {
     width: 36px;
     height: 38px;
     border: 1px solid #DEE2E6;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: #0d6efd;

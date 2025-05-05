@@ -6,10 +6,25 @@ const nextButton = document.getElementById("next")
 const logOutLink = document.getElementById("log-out")
 const searchTestField = document.getElementById("search-test-field")
 const playAmountToast = document.getElementById("play-amount-toast")
+const loginToPlayTest = document.getElementById("login-to-play-test")
 const randomButton = document.getElementById("random-button")
 
 if (!sessionStorage.getItem("isLogged") && !localStorage.getItem("isLogged")) {
   location.href = "../pages/Login.html"
+}
+
+function checkSessionUser() {
+  const isLogged = sessionStorage.getItem("isLogged")
+  const currentUserRole = sessionStorage.getItem("currentUserRole")
+
+  if (isLogged || currentUserRole !== null) {
+    const Toast = new bootstrap.Toast(loginToPlayTest, { delay: 2000 })
+    Toast.show()
+    setTimeout(() => {
+      location.href = "../pages/Login.html"
+    },2500)
+    return false
+  }
 }
 
 randomButton.addEventListener("click", () => {
@@ -28,6 +43,9 @@ randomButton.addEventListener("click", () => {
 
   localStorage.setItem("currentTestName", randomTest.testName)
 
+  const session = checkSessionUser()
+  if (!session) return
+
   setTimeout(() => {
     location.href = "test_page.html"
   }, 2500)
@@ -43,10 +61,17 @@ searchTestField.addEventListener("keydown", function(event) {
   }
 })
 
+searchTestField.addEventListener("change", function() {
+  listTestsField.innerHTML = ""
+    const searchText = searchTestField.value
+    const tests = getTestsFromLocalStorage()
+    const filteredTests = tests.filter(test => test.testName.toLowerCase().includes(searchText.toLowerCase()))
+    renderTest(filteredTests)
+})
+
 logOutLink.addEventListener("click", () => {
   localStorage.removeItem("isLogged")
   localStorage.removeItem("currentUserRole")
-  location.href = "../pages/Login.html"
 })
 
 function sortTestAmountAsscending() {
@@ -99,7 +124,7 @@ function renderTest(tests) {
           <h1>${test.testName}</h1>
           <p>${test.numberOfQuestions} câu hỏi - ${test.playAmount} lượt chơi</p>
         </div>
-        <button type="button" class="play-button" id="${test.id}" data-test-name="${test.testName}">Chơi</button>
+        <button type="button" class="play-button" id="${test.id}" data-test-name="${test.testName}"><i class="fa-solid fa-gamepad"></i>&nbsp;&nbsp;Chơi</button>
       </div>`
     listTestsField.innerHTML += data
   })
@@ -110,7 +135,8 @@ function renderTest(tests) {
     const testName = button.getAttribute("data-test-name")
     const tests = getTestsFromLocalStorage()
     const selectedTest = tests.find(test => test.testName === testName)
-    selectedTest.playAmount++
+    selectedTest.playAmount--
+    localStorage.setItem("tests", JSON.stringify(tests))
     if (selectedTest && selectedTest.playAmount > 0) {
       localStorage.setItem("currentTestName", testName)
       setTimeout(() => {
@@ -131,7 +157,6 @@ function displayTests(page) {
 
   const totalPages = Math.ceil(tests.length / rowsPerPage)
 
-  // Nếu trang hiện tại vượt quá số trang, quay lại trang cuối cùng hợp lệ
   if (page > totalPages && totalPages > 0) {
     currentPage = totalPages
     return displayTests(currentPage)

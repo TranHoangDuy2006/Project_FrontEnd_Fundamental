@@ -12,15 +12,27 @@ const registerToast = document.getElementById("register-toast")
 function getAccountFromLocalStorage() {
   return JSON.parse(localStorage.getItem("users")) || []
 }
+
+document.querySelectorAll(".toggle-password").forEach((eyeIcon) => {
+  eyeIcon.addEventListener("click", () => {
+      const input = document.querySelector(eyeIcon.getAttribute("toggle"))
+      const isPassword = input.type === "password"
+      input.type = isPassword ? "text" : "password"
+      eyeIcon.classList.toggle("fa-eye")
+      eyeIcon.classList.toggle("fa-eye-slash")
+  })
+})
   
 function saveAccountToLocalStorage(name, email, password) {
   const users = getAccountFromLocalStorage()
+  const secretKey = "DoYouWantToSeeMyPassword?"
+  const secretPassword = CryptoJS.AES.encrypt(password, secretKey).toString()
 
   const newUser = {
     id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
     fullName: name,
     email: email,
-    password: password,
+    password: secretPassword,
     role: "user"
   }
 
@@ -110,12 +122,12 @@ registerButton.addEventListener("click", () => {
   }
 
   if (confirmPassword.value.trim() === "") {
-    confirmPasswordError.innerHTML = `<span style="color: red; margin: 20px 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Xác nhận mật khẩu không được để trống!</span>`
+    confirmPasswordError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Xác nhận mật khẩu không được để trống!</span>`
     confirmPassword.style.border = "none"
     confirmPassword.style.outline = "2px solid red"
     valid = false
   } else if (confirmPassword.value !== passwordRegister.value) {
-    confirmPasswordError.innerHTML = `<span style="color: red; margin: 20px 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Mật khẩu xác nhận không khớp với mật khẩu đã đăng ký!</span>`
+    confirmPasswordError.innerHTML = `<span style="color: red; margin: 0 0 24px 20px !important; display: inline-block;"><i class="fa-solid fa-xmark"></i> Mật khẩu xác nhận không khớp với mật khẩu đã đăng ký!</span>`
     confirmPassword.style.border = "none"
     confirmPassword.style.outline = "2px solid red"
     valid = false

@@ -85,19 +85,19 @@ input::placeholder {
 }
 
 input {
-    width: 472px;
+    width: 472px !important;
     height: 65px;
-    font-size: 20px;
-    border: 1px solid #E4E4E7;
-    border-radius: 9px;
-    margin: 0 0 25px 15px;
-    box-sizing: border-box;
-    padding: 20px;
-    font-weight: 400;
+    font-size: 20px !important;
+    border: 1px solid #E4E4E7 !important;
+    border-radius: 9px !important;
+    margin: 0 0 25px 15px !important;
+    box-sizing: border-box !important;
+    padding: 20px !important;
+    font-weight: 400 !important;
 }
 
 input:nth-child(1) {
-    margin-top: 25px;
+    margin-top: 25px !important;
 }
 
 input:nth-of-type(4) {
