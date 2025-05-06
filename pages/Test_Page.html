@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/test_page.css">
+    <link rel="stylesheet" href="../css/test_page_responsive.css">
     <link rel="icon" href="../assets/images/Test_Image.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,16 +23,17 @@
             <button class="dropdown-toggle custom-menu-actions-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
-            <ul class="dropdown-menu animate__animated animate__fadeInTopLeft">
-              <li><a class="dropdown-item" href="../pages/Home.html" style="text-align: center;"><i class="fa-solid fa-house-chimney"></i> &nbsp;Trang chủ</a></li>
-              <li><a class="dropdown-item" href="../pages/Login.html" style="text-align: center;" id="log-out"><i class="fa-solid fa-right-from-bracket"></i> &nbsp;Đăng xuất</a></li>
+            <ul class="dropdown-menu animate__animated animate__fadeInDown animate__faster">
+              <li><a class="dropdown-item" href="#" style="text-align: center;" id="home"><i class="fa-solid fa-house-chimney"></i> &nbsp;Trang chủ</a></li>
+              <li><a class="dropdown-item" href="#" style="text-align: center;" id="log-out"><i class="fa-solid fa-right-from-bracket"></i> &nbsp;Đăng xuất</a></li>
             </ul>
         </div>
 
         <input type="text" placeholder="Tìm kiếm bài test" class="search-test-field" disabled>
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 840px; top: 50%; transform: translateY(-50%); color: #A9A9A9;"></i>
         <div class="direction">
-            <a href="../pages/Home.html">Trang chủ</a>
-            <a href="../pages/Login.html" id="log-out">Đăng xuất</a>
+            <a href="#" class="home-link" id="home-link"><i class="fa-solid fa-house-chimney"></i>&nbsp;&nbsp;Trang chủ</a>
+            <a href="#" id="log-out-link"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Đăng xuất</a>
         </div>
 
     </nav>
@@ -41,13 +43,13 @@
         <div class="main-contents">
             <div class="nav-sidebar">
                 <div class="sidebar-title">
-                    <h1>Điều hướng nhanh:</h1>
+                    <h1><i class="fa-solid fa-diamond-turn-right"></i> &nbsp;Điều hướng nhanh:</h1>
 
                     <div class="list-question-field" id="list-question-field">
 
                     </div>
                     <div class="sidebar-info">
-                        <p>Lưu ý: Đây là danh sách câu hỏi bạn có thể sử dụng để điều hướng!</p>
+                        <p><i class="fa-solid fa-triangle-exclamation" style="color: #FF0000;"></i> &nbsp;Lưu ý: Đây là danh sách câu hỏi bạn có thể sử dụng để điều hướng !</p>
                     </div>
                 </div>
             </div>
@@ -70,9 +72,9 @@
                 </div>
 
                 <div class="action-button-field">
-                    <button class="complete-button" id="complete-button">Hoàn thành</button>
-                    <button class="previous-button" id="previous-button">Trước</button>
-                    <button class="next-button" id="next-button">Tiếp</button>
+                    <button class="complete-button" id="complete-button"><i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp; Hoàn thành</button>
+                    <button class="previous-button" id="previous-button"><i class="fa-solid fa-arrow-left"></i>&nbsp; Trước</button>
+                    <button class="next-button" id="next-button">Tiếp&nbsp; <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
 
@@ -84,10 +86,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <h1>Hoàn thành</h1>
+                    <h1>Hoàn Thành</h1>
                     <div class="congratulation-field">
-                        <h1>Chúc mừng!</h1>
-                        <p>Bạn đã hoàn thành bài kiểm tra!</p>
+                        <h1>🎉 Chúc mừng ! 🎉</h1>
+                        <p>Bạn đã hoàn thành bài kiểm tra !</p>
                         <hr>
                         <p>Điểm của bạn: <span id="score-percentage" class="score-percentage"></span> </p>
                     </div>
@@ -96,15 +98,15 @@
                             <h1>Kết quả cụ thể:</h1>
                         </div>
                         <div class="test-result">
-                            <p>Tổng số câu hỏi: <span id="total-questions" class="number"></span></p>
-                            <p>Câu trả lời đúng: <span id="correct-answers" class="number"></span></p>
-                            <p>Câu trả lời sai: <span id="wrong-answers" class="number"></span></p>
+                            <p>● Tổng số câu hỏi: <span id="total-questions" class="number"></span></p>
+                            <p>● Câu trả lời đúng (✅): <span id="correct-answers" class="number"></span></p>
+                            <p>● Câu trả lời sai (❌): <span id="wrong-answers" class="number"></span></p>
                         </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="try-again-button">Làm lại</button>
-                    <button type="button" class="btn btn-success" style="margin-left: 24px;"" id="home-button">Trang chủ</button>
+                    <button type="button" class="btn btn-primary" id="try-again-button"><i class="fa-solid fa-arrows-rotate"></i>&nbsp;&nbsp;Làm lại</button>
+                    <button type="button" class="btn btn-success" style="margin-left: 24px;"" id="home-button"><i class="fa-solid fa-house-chimney"></i>&nbsp;&nbsp;Trang chủ</button>
                   </div>
                 </div>
               </div>

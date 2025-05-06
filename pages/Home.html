@@ -17,9 +17,11 @@
 
         <h1 class="logo">QuizzForge</h1>
         <input type="text" placeholder="Tìm kiếm bài test" class="search-test-field" id="search-test-field">
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 840px; top: 50%; transform: translateY(-50%); color: black; cursor: pointer;" id="search-icon"></i>
         <div class="direction">
-            <a href="../pages/Home.html">Trang chủ</a>
-            <a href="../pages/Login.html" id="log-out">Đăng xuất</a>
+            <a href="../pages/Home.html"><i class="fa-solid fa-house-chimney"></i>&nbsp;&nbsp;Trang chủ</a>
+            <a href="../pages/Management_Tests.html" id="test-link"><i class="fa-solid fa-clipboard-list"></i>&nbsp;&nbsp;Bài test</a>
+            <a href="../pages/Login.html" id="log-out"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Đăng xuất</a>
         </div>
 
     </nav>
@@ -27,16 +29,16 @@
     <main>
 
         <div class="section">
-            <p class="title">Hãy thử 1 câu đố ngẫu nhiên 🎲</p>
+            <p class="title">🫵 Hãy thử 1 câu đố ngẫu nhiên ! 🎲</p>
             <button class="random-button" type="button" id="random-button"><i class="fa-solid fa-gamepad"></i>&nbsp;&nbsp;Chơi</button>
         </div>
 
         <div class="main-content">
-            <h1 class="main-content-title">⭐ Các câu đố nổi bật</h1>
+            <h1 class="main-content-title">⭐ Các câu đố nổi bật ⭐</h1>
             <div class="arrangement-field">
                 <label for="arrangement" class="arrangement">Sắp xếp theo:</label>
-                <button class="assending-button" type="button" id="assending-button">Lượt chơi tăng dần</button>
-                <button class="descending-button" type="button" id="descending-button">Lượt chơi giảm dần</button>
+                <button class="assending-button" type="button" id="assending-button">Lượt chơi (<i class="fa-solid fa-arrow-up" style="color:#4a3db5"></i>)</button>
+                <button class="descending-button" type="button" id="descending-button">Lượt chơi (<i class="fa-solid fa-arrow-down" style="color:#4a3db5"></i>)</button>
             </div>
 
             <div class="test-list-field" id="test-list-field">

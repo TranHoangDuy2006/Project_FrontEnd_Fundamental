@@ -22,7 +22,9 @@ const addQuestionModal = document.getElementById("add-question-modal")
 const editQuestionModal = document.getElementById("edit-questions-modal")
 const confirmDeleteButton = document.getElementById("delete-question-button")
 const addMoreAnswerButton = document.getElementById("add-more-answer-button")
+const editMoreAnswerButton = document.getElementById("edit-more-question-button")
 const answersBodyField = document.getElementById("answers-body-field")
+const editAnswersBodyField = document.getElementById("edit-answers-body-field")
 const saveTestButton = document.getElementById("end-save-button")
 const logOutLink = document.getElementById("log-out")
 
@@ -39,8 +41,14 @@ const listAnswers = document.querySelectorAll(".form-control")
 const listCheckBox = document.querySelectorAll('input[type="checkbox"]')
 const title = document.getElementById("title")
 const testImageLink = document.querySelector("#test-image")
+const quizzLogo = document.getElementById("logo")
 
 let findQuestionId = null
+
+quizzLogo.addEventListener("click", () => {
+  location.href = "../pages/Home.html"
+  localStorage.removeItem("editTestId")
+})
 
 testName.addEventListener("input", () => {
   testNameStatus.innerHTML = ""
@@ -102,6 +110,7 @@ logOutLink.addEventListener("click", () => {
   localStorage.removeItem("isLogged")
   localStorage.removeItem("currentUserRole")
   localStorage.removeItem("editTestId")
+  localStorage.removeItem("questions")
 })
 
 function getTestsFromLocalStorage() {
@@ -333,17 +342,17 @@ saveTestButton.addEventListener("click", () => {
   }
 
   if (!isEditMode && tests.some(test => test.testName.toLowerCase() === testName.value.trim().toLowerCase())) {
-    testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Tên bài test đã tồn tại, vui lòng sử dụng tên bài test khác!</span>`
+    testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Tên bài test đã tồn tại, vui lòng sử dụng tên bài test khác !</span>`
     valid = false
   }
 
   if (questions.length < 1) {
-    testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Phải có ít nhất một câu hỏi cho bài test!</span>`
+    testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Phải có ít nhất một câu hỏi cho bài test !</span>`
     valid = false
   }
 
   if (!isEditMode && testImageLink.value.trim() === "") {
-    testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Link ảnh bài test không được để trống!</span>`
+    testNameStatus.innerHTML = `<span style="color: red; display: block; margin: 15px 0 0 15px;">Link ảnh bài test không được để trống !</span>`
     valid = false
   }
 
@@ -376,7 +385,7 @@ saveButton.addEventListener("click", () => {
   let check = true
 
   if (addQuestion.value.trim() === "") {
-      questionNameStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi không được để trống!</span>`
+      questionNameStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi không được để trống !</span>`
       addQuestion.style.border = "none"
       addQuestion.style.outline = "1px solid red"
       check = false
@@ -398,13 +407,13 @@ saveButton.addEventListener("click", () => {
   })
 
   if (answers.length < 2) {
-    checkAnswerStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi phải có ít nhất hai đáp án để lựa chọn!</span>`
+    checkAnswerStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi phải có ít nhất hai đáp án để lựa chọn !</span>`
     check = false
   }
 
   const oneCorrect = answers.some(ans => ans.isCorrect)
   if (oneCorrect === false) {
-    checkAnswerStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi phải có ít nhất một đáp án đúng!</span>`
+    checkAnswerStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi phải có ít nhất một đáp án đúng !</span>`
     check = false
   }
 
@@ -451,10 +460,10 @@ editSaveButton.addEventListener("click", () => {
   })
 
   if (updatedAnswers.length < 2) {
-    editCheckAnswerStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi phải có ít nhất hai đáp án để lựa chọn!</span>`
+    editCheckAnswerStatus.innerHTML = `<span style="color: red; display: block; margin-top: 15px;">Câu hỏi phải có ít nhất hai đáp án để lựa chọn !</span>`
     valid = false
   } else if (!updatedAnswers.some(a => a.isCorrect)) {
-    editCheckAnswerStatus.innerHTML = `<span style="color: red; margin-top: 15px;">Câu hỏi phải có ít nhất một đáp án đúng!</span>`
+    editCheckAnswerStatus.innerHTML = `<span style="color: red; margin-top: 15px;">Câu hỏi phải có ít nhất một đáp án đúng !</span>`
     valid = false
   }
 
@@ -493,9 +502,31 @@ addMoreAnswerButton.addEventListener("click", () => {
       <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
     </div>
   `)
+  checkAnswerStatus.innerHTML = ""
+})
+
+editMoreAnswerButton.addEventListener("click", () => {
+  editMoreAnswerButton.insertAdjacentHTML("beforebegin", `
+    <div class="input-group mb-3">
+      <div class="input-group-text">
+        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+      <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
+    </div>
+  `)
 })
 
 answersBodyField.addEventListener("click", function(event) {
+  if (event.target.classList.contains("fa-trash-can")) {
+    const inputGroup = event.target.closest(".input-group")
+    if (inputGroup) {
+      inputGroup.remove()
+    }
+  }
+})
+
+editAnswersBodyField.addEventListener("click", function(event) {
   if (event.target.classList.contains("fa-trash-can")) {
     const inputGroup = event.target.closest(".input-group")
     if (inputGroup) {
@@ -521,7 +552,7 @@ answersGroup.forEach(group => {
 function loadEditTestData() {
   const editTestId = localStorage.getItem("editTestId")
   if (editTestId) {
-    title.innerHTML = "Chỉnh sửa bài test"
+    title.innerHTML = "Chỉnh sửa bài Test"
     const tests = getTestsFromLocalStorage()
     const test = tests.find(t => t.id === parseInt(editTestId))
     if (test) {

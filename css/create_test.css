@@ -32,17 +32,22 @@
 }
 
 a {
-    text-decoration: none;
     color: #ffffff;
     font-weight: 400;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     margin-right: 52px;
+    text-decoration: none !important;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
     color: #5683e9;
+}
+
+a:hover i {
+    color: #5683e9 !important;
+    text-decoration: underline;
 }
 
 .direction {
@@ -173,6 +178,11 @@ td {
     font-size: 16px;
 }
 
+.test-name:focus, .time:focus, .image-link:focus, .select-category:focus {
+    outline: none !important;
+    border: 2px solid #0d6efd !important;
+}
+
 .select-category, .time {
     width: 150px;
     height: 38px;
@@ -206,7 +216,7 @@ label:nth-of-type(3) {
 }
 
 label:nth-of-type(4) {
-    margin-left: 120px;
+    margin-left: 115px;
 }
 
 .time {
@@ -234,7 +244,7 @@ i {
     transition: all 0.1s ease-in-out;
 }
 
-i:hover {
+.input-group-text i:hover {
     cursor: pointer;
     transform: scale(1.2);
 }
@@ -308,7 +318,7 @@ button {
     border-radius: 6px;
     border: 0.5px solid rgb(178, 178, 178);
     box-sizing: border-box;
-    padding: 0 10px 0 10px;
+    padding: 0 15px 0 15px;
     font-size: 16px;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
@@ -325,4 +335,8 @@ button {
 
 .inactive-add-question-button {
     background-color: #6c757d;
+}
+
+.logo {
+    cursor: pointer !important;
 }

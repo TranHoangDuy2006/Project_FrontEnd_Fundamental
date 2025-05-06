@@ -104,6 +104,11 @@ input:nth-of-type(4) {
     margin-bottom: 0 !important;
 }
 
+input:focus {
+    outline: none !important;
+    border: 2px solid #0d6efd !important;
+}
+
 .register-button {
     width: 472px;
     height: 65px;

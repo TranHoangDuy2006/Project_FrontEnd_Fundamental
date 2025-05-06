@@ -15,10 +15,15 @@ const logOutLink = document.getElementById("log-out")
 const editTestButton = document.querySelectorAll(".edit-test-button")
 const createCategoryToast = document.getElementById("create-category-toast")
 const deleteCategoryToast = document.getElementById("delete-category-toast")
+const logoQuizz = document.getElementById("logo")
 
 logOutLink.addEventListener("click", () => {
   localStorage.removeItem("isLogged")
   localStorage.removeItem("currentUserRole") 
+})
+
+logoQuizz.addEventListener("click", () => {
+  location.href = "../pages/Home.html"
 })
 
 let findCategoryId = null
@@ -75,10 +80,8 @@ confirmDeleteButton.addEventListener("click", () => {
     const modal = bootstrap.Modal.getInstance(deleteModal)
     modal.hide()
 
-    setTimeout(() => {
-      const toast = new bootstrap.Toast(deleteCategoryToast, ({ delay: 1000 }))
-      toast.show()
-    }, 200)
+    const toast = new bootstrap.Toast(deleteCategoryToast, ({ delay: 1500 }))
+    toast.show()
 
     displayCategories(currentPage)
     findCategoryId = null

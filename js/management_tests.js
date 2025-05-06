@@ -7,6 +7,8 @@ const confirmDeleteTestButton = document.getElementById("delete-test-confirm-but
 const deleteTestModal = document.getElementById("delete-test-modal")
 const searchTestField = document.getElementById("search-test-name")
 const sortTestOption = document.getElementById("test")
+const logo = document.getElementById("logo")
+const deleteTestToast = document.getElementById("delete-test-toast")
 
 let currentPage = 1
 const rowsPerPage = 8
@@ -20,6 +22,10 @@ logOutLink.addEventListener("click", () => {
 
 addTestButton.addEventListener("click", () => {
   location.href = "../pages/Create_Test.html"
+})
+
+logo.addEventListener("click", () => {
+  location.href = "../pages/Home.html"
 })
 
 function sortTests() {
@@ -74,7 +80,14 @@ function getTestsFromLocalStorage() {
 
 function deleteTest(testId) {
   const tests = getTestsFromLocalStorage()
-  const updatedTests = tests.filter(test => test.id !== testId)
+  const updatedTests = tests
+    .filter(test => test.id !== testId)              
+    .sort((a, b) => a.id - b.id)                     
+    .map((test, index) => ({                         
+      ...test,
+      id: index + 1
+    }))
+
   localStorage.setItem("tests", JSON.stringify(updatedTests))
   displayTests(currentPage)
 }
@@ -85,6 +98,8 @@ confirmDeleteTestButton.addEventListener("click", () => {
     const deleteTestConfirmModal = deleteTestModal
     const modal = bootstrap.Modal.getInstance(deleteTestConfirmModal)
     modal.hide()
+    const toast = new bootstrap.Toast(deleteTestToast, ({ delay: 1500 }))
+    toast.show()
     findTestId = null
   }
 })

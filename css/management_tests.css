@@ -31,6 +31,10 @@
     margin: -3px 0 0 60px !important;
 }
 
+.logo:hover {
+    cursor: pointer !important;
+}
+
 a {
     text-decoration: none;
     color: #ffffff;
@@ -45,11 +49,18 @@ a:hover {
     color: #5683e9;
 }
 
+a:nth-child(2) {
+    color: grey;
+    pointer-events: none;
+    text-decoration: none;
+    cursor: default;
+}
+
 .direction {
     margin: 16px 0 0 562px;
     position: absolute;
     right: 60px;
-    top: -1px;
+    top: 1px;
 }
 
 .section {
@@ -169,7 +180,7 @@ tr td:nth-child(1), tr td:nth-child(6) {
     border-radius: 6px;
     border: 0.5px solid rgb(178, 178, 178);
     box-sizing: border-box;
-    padding: 0 10px 0 10px;
+    padding: 0 32px 0 10px;
     font-size: 16px;
     font-weight: 400;
     position: absolute;
@@ -217,6 +228,7 @@ tr td:nth-child(1), tr td:nth-child(6) {
     width: 36px;
     height: 38px;
     border: 1px solid #DEE2E6;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: #0d6efd;
@@ -285,5 +297,11 @@ button:disabled:hover {
 }
 
 .modal-body-custom {
-    padding: 24px 0 14px 70px !important;
+    padding: 24px 0 10px 70px !important;
+}
+
+.confirm-delete-test-text {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 }

@@ -36,6 +36,10 @@
     margin: -3px 0 0 60px !important;
 }
 
+.logo:hover {
+    cursor: pointer !important;
+}
+
 a {
     text-decoration: none;
     color: #ffffff;
@@ -48,6 +52,13 @@ a {
 a:hover {
     text-decoration: underline;
     color: #5683e9;
+}
+
+a:nth-child(1) {
+    color: grey;
+    pointer-events: none;
+    text-decoration: none;
+    cursor: default;
 }
 
 .direction {
@@ -215,7 +226,7 @@ tr td:nth-child(1), tr td:nth-child(2) {
 }
 
 .modal-body-custom {
-    padding: 24px 0 14px 70px !important;
+    padding: 24px 0 10px 70px !important;
 }
 
 button:disabled {
@@ -227,4 +238,11 @@ button:disabled {
 
 button:disabled:hover {
     cursor: not-allowed !important;
+}
+
+.confirm-delete-category-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #212529;
 }

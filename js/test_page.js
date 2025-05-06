@@ -15,27 +15,58 @@
   const correctAnswers = document.getElementById("correct-answers")
   const wrongAnswers = document.getElementById("wrong-answers")
   const tryAgainButton = document.getElementById("try-again-button")
+  const home = document.getElementById("home")
+  const homeLink = document.getElementById("home-link")
+  const logOutLink = document.getElementById("log-out-link")
 
   let currentQuestionIndex = 0
   let answeredQuestions = []
 
-  homeButton.addEventListener("click", () => {
+  home.addEventListener("click", () => {
+    localStorage.removeItem("currentTestName")
     setTimeout(() => {
       location.href = "../pages/Home.html"
-    }, 1000)
+    }, 1500)
   })
 
   logoutButton.addEventListener("click", () => {
     localStorage.removeItem("isLogged")
     localStorage.removeItem("currentUserRole")
-    location.href = "../pages/Login.html"
+    localStorage.removeItem("currentTestName")
+    setTimeout(() => {
+      location.href = "../pages/Login.html"
+    }, 1500)
+  })
+
+  logOutLink.addEventListener("click", () => {
+    localStorage.removeItem("isLogged")
+    localStorage.removeItem("currentUserRole")
+    localStorage.removeItem("currentTestName")
+    setTimeout(() => {
+      location.href = "../pages/Login.html"
+    }, 1500)
+
+  })
+
+  homeButton.addEventListener("click", () => {
+    localStorage.removeItem("currentTestName")
+    setTimeout(() => {
+      location.href = "../pages/Home.html"
+    }, 1500)
+  })
+
+  homeLink.addEventListener("click", () => {
+    localStorage.removeItem("currentTestName")
+    setTimeout(() => {
+      location.href = "../pages/Home.html"
+    }, 1500)
   })
 
   function showQuestion(index) {
     const questionData = currentTest.questions[index]
     currentQuestionIndex = index
 
-    questionNumber.innerHTML = `❓ Câu hỏi ${index + 1} trên ${currentTest.questions.length}:`
+    questionNumber.innerHTML = `<i class="fa-solid fa-circle-question"></i> <strong>Câu hỏi ${index + 1} trên ${currentTest.questions.length}</strong>:`
     questionText.innerHTML = `${questionData.content}`
 
     let answersHTML = ""
@@ -78,6 +109,8 @@
     testName.innerHTML = `<img src="../assets/images/Test_Image_title_Test.png" alt="Test"> ${currentTest.testName} <img src="../assets/images/Test_Image_title_Test.png" alt="Test">`
     const questionsCount = currentTest.questions.length
     listQuestionField.innerHTML = ""
+    timeField.style.display = "inline-block"
+    homeLink.classList.add("home-link")
     for (let i = 0; i < questionsCount; i++) {
       answeredQuestions[i] = []
       const question = document.createElement("button")
@@ -99,6 +132,7 @@
   showQuestion(0)
   const firstQuestionButton = document.querySelector(".redirect-button")
   firstQuestionButton.classList.add("question-clicked")
+  completeButton.style.display = "inline-block"
 
   previousButton.addEventListener("click", () => {
     if (currentQuestionIndex > 0) {
@@ -141,8 +175,8 @@
 
     timeField.innerHTML = `
       <div>
-        <p>Thời gian test: <strong>${totalMinutes} phút.</strong></p>
-        <p style="margin-top: 16px;">Còn lại: <strong>${minutes} phút ${formattedSeconds} giây.</strong></p>
+        <p><i class="fa-solid fa-clock" style="color: green;"></i>&nbsp;&nbsp;Thời gian test: <strong>${totalMinutes} phút.</strong></p>
+        <p style="margin-top: 16px;"><i class="fa-solid fa-clock" style="color: red;"></i>&nbsp;&nbsp;Còn lại: <strong>${minutes} phút ${formattedSeconds} giây.</strong></p>
       </div>
     `
   }
@@ -197,6 +231,10 @@
     calculateResult()
     const result = new bootstrap.Modal(resultModal)
     result.show()
+    localStorage.removeItem("currentTestName")
+    completeButton.style.display = "none"
+    homeLink.classList.remove("home-link")
+    timeField.style.display = "none"
   })
 
   // setInterval: chạy một đoạn code lặp đi lặp lại sau một khoảng thời gian nhất định
@@ -216,6 +254,10 @@
   }
   
   tryAgainButton.addEventListener("click", () => {
+    currentTest.playAmount--
+    timeField.style.display = "inline-block"
+    homeLink.classList.add("home-link")
+    localStorage.setItem("tests", JSON.stringify(tests))
     answeredQuestions = []
     for (let i = 0; i < currentTest.questions.length; i++) {
       answeredQuestions[i] = []
@@ -248,6 +290,7 @@
     }
 
     showQuestion(0)
+    completeButton.style.display = "inline-block"
 
     const allQuestionsButton = listQuestionField.querySelectorAll(".redirect-button")
     allQuestionsButton[0].classList.add("question-clicked")

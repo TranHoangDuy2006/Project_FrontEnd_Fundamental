@@ -14,11 +14,11 @@
 
     <nav class="navbar">
 
-        <h1 class="logo">QuizzForge</h1>
+        <h1 class="logo" id="logo">QuizzForge</h1>
         <div class="direction">
-            <a href="../pages/Management_Categories.html">Danh mục</a>
-            <a href="../pages/Management_Tests.html">Bài test</a>
-            <a href="../pages/Login.html" id="log-out">Đăng xuất</a>
+            <a href="../pages/Management_Categories.html"><i class="fa-solid fa-layer-group"></i>&nbsp;&nbsp;Danh mục</a>
+            <a href="../pages/Management_Tests.html"><i class="fa-solid fa-clipboard-list"></i>&nbsp;&nbsp;Bài test</a>
+            <a href="../pages/Login.html" id="log-out"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Đăng xuất</a>
         </div>
 
     </nav>
@@ -56,8 +56,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                    <button type="button" class="btn btn-primary" style="margin-left: 24px" id="add-category-button">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Huỷ</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 24px" id="add-category-button"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Lưu</button>
                     </div>
                 </div>
                 </div>
@@ -101,10 +101,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body modal-body-custom">
-                        <p>Bạn có chắc chắn muốn xóa danh mục này không?</p>
+                        <p class="confirm-delete-category-text">Bạn có chắc chắn muốn xóa danh mục này không ?</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Huỷ</button>
                         <button type="button" class="btn btn-danger" style="margin-left: 24px;"" id="delete-category-button">Xoá</button>
                       </div>
                     </div>

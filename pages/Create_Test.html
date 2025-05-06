@@ -15,11 +15,11 @@
 
     <nav class="navbar">
 
-        <h1 class="logo">QuizzForge</h1>
+        <h1 class="logo" id="logo">QuizzForge</h1>
         <div class="direction">
-            <a href="../pages/Management_Categories.html">Danh mục</a>
-            <a href="../pages/Home.html">Bài test</a>
-            <a href="../pages/Login.html" id="log-out">Đăng xuất</a>
+            <a href="../pages/Management_Categories.html"><i class="fa-solid fa-layer-group" style="color: white; position: static;"></i>&nbsp;&nbsp;Danh mục</a>
+            <a href="../pages/Management_Tests.html"><i class="fa-solid fa-clipboard-list" style="color: white; position: static;"></i>&nbsp;&nbsp;Bài test</a>
+            <a href="../pages/Login.html" id="log-out"><i class="fa-solid fa-right-from-bracket" style="color: white; position: static;"></i>&nbsp;&nbsp;Đăng xuất</a>
         </div>
 
     </nav>
@@ -27,13 +27,13 @@
     <main>
 
         <div class="main-contents">
-            <h1 id="title">Tạo bài test</h1>
-            <label for="test-name">Tên bài test</label>
+            <h1 id="title">Tạo bài Test</h1>
+            <label for="test-name">Tên bài Test:</label>
             <input type="text" placeholder="Điền tên bài test" class="test-name" id="test-name">
             <p id="test-name-status"></p>
-            <label for="category-list">Danh mục</label>
-            <label for="test-time">Thời gian (phút)</label>
-            <label for="test-image">Link ảnh bài test</label>
+            <label for="category-list">Danh mục:</label>
+            <label for="test-time">Thời gian (phút):</label>
+            <label for="test-image">Link ảnh bài Test:</label>
             <div>
               <select id="category-list" class="select-category">
 
@@ -91,12 +91,12 @@
                                 </div>
                                 <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Nhập câu trả lời tại đây">
                               </div>
-                              <button type="button" class="btn btn-secondary" style="margin-bottom: 16px !important;" id="add-more-answer-button">Thêm câu trả lời</button>
+                              <button type="button" class="btn btn-secondary" style="margin-bottom: 16px !important;" id="add-more-answer-button"><i class="fa-solid fa-plus" style="position: static; color: white"></i>&nbsp;&nbsp;Thêm câu trả lời</button>
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-modal">Huỷ</button>
-                        <button type="button" class="btn btn-primary" style="margin-left: 24px;" id="save-button">Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-modal"><i class="fa-solid fa-xmark" style="position: static; color: white"></i>&nbsp;&nbsp;Huỷ</button>
+                        <button type="button" class="btn btn-primary" style="margin-left: 24px;" id="save-button"><i class="fa-solid fa-floppy-disk" style="position: static; color: white"></i>&nbsp;&nbsp;Lưu</button>
                       </div>
                     </div>
                   </div>
@@ -111,7 +111,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <div class="col-12">
+                      <div class="col-12" id="edit-answers-body-field">
                           <label for="edit" class="form-label label-custom">Câu hỏi:</label>
                           <input type="text" class="form-control" id="edit-question" placeholder="Nhập câu hỏi">
                           <p id="edit-question-name-status"></p>
@@ -145,12 +145,12 @@
                               </div>
                               <input type="text" class="form-control" aria-label="Text input with checkbox" id="edit-answer-question-4">
                             </div>
-                            <button type="button" class="btn btn-secondary" style="margin-bottom: 16px !important;" id="add-more-question-button">Thêm câu trả lời</button>
+                            <button type="button" class="btn btn-secondary" style="margin-bottom: 16px !important;" id="edit-more-question-button"><i class="fa-solid fa-plus" style="position: static; color: white"></i>&nbsp;&nbsp;Thêm câu trả lời</button>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-modal">Huỷ</button>
-                      <button type="button" class="btn btn-primary" style="margin-left: 24px;" id="edit-save-button">Lưu</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-modal"><i class="fa-solid fa-xmark" style="position: static; color: white"></i>&nbsp;&nbsp;Huỷ</button>
+                      <button type="button" class="btn btn-primary" style="margin-left: 24px;" id="edit-save-button"><i class="fa-solid fa-floppy-disk" style="position: static; color: white"></i>&nbsp;&nbsp;Lưu</button>
                     </div>
                   </div>
                 </div>

@@ -8,16 +8,22 @@ const searchTestField = document.getElementById("search-test-field")
 const playAmountToast = document.getElementById("play-amount-toast")
 const loginToPlayTest = document.getElementById("login-to-play-test")
 const randomButton = document.getElementById("random-button")
+const searchIcon = document.getElementById("search-icon")
+const testLink = document.getElementById("test-link")
 
 if (!sessionStorage.getItem("isLogged") && !localStorage.getItem("isLogged")) {
   location.href = "../pages/Login.html"
 }
 
+searchIcon.addEventListener("click", () => {
+  searchTestField.focus()
+})
+
 function checkSessionUser() {
   const isLogged = sessionStorage.getItem("isLogged")
   const currentUserRole = sessionStorage.getItem("currentUserRole")
 
-  if (isLogged || currentUserRole !== null) {
+  if (isLogged === "true" || currentUserRole !== null) {
     const Toast = new bootstrap.Toast(loginToPlayTest, { delay: 2000 })
     Toast.show()
     setTimeout(() => {
@@ -25,7 +31,20 @@ function checkSessionUser() {
     },2500)
     return false
   }
+  return true
 }
+
+function checkRole() {
+  const currentUserRole = localStorage.getItem("currentUserRole")
+  const isLogged = localStorage.getItem("isLogged")
+  if (currentUserRole === "admin" && isLogged === "true") {
+    testLink.style.display = "inline-block"
+  } else {
+    testLink.style.display = "none"
+  }
+}
+
+checkRole()
 
 randomButton.addEventListener("click", () => {
   const tests = getTestsFromLocalStorage()
@@ -48,8 +67,17 @@ randomButton.addEventListener("click", () => {
 
   setTimeout(() => {
     location.href = "test_page.html"
-  }, 2500)
+  }, 1000)
 })
+
+document.addEventListener("DOMContentLoaded", (defaultSort))
+
+function defaultSort() {
+  const tests = getTestsFromLocalStorage()
+  tests.sort((a, b) => a.id - b.id)
+  localStorage.setItem("tests", JSON.stringify(tests))
+  displayTests(currentPage)
+}
 
 searchTestField.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
@@ -132,6 +160,8 @@ function renderTest(tests) {
   const playButtons = document.querySelectorAll(".play-button")
   playButtons.forEach(button => {
   button.addEventListener("click", () => {
+    const session1 = checkSessionUser()
+    if (!session1) return
     const testName = button.getAttribute("data-test-name")
     const tests = getTestsFromLocalStorage()
     const selectedTest = tests.find(test => test.testName === testName)
@@ -141,7 +171,7 @@ function renderTest(tests) {
       localStorage.setItem("currentTestName", testName)
       setTimeout(() => {
         location.href = "test_page.html"
-      , 2500})
+      , 1500})
     }
     else {
       const toast = new bootstrap.Toast(playAmountToast, { delay: 2000 }) 
